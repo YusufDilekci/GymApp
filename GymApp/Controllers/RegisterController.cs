@@ -1,15 +1,14 @@
 ﻿using EntityLayer.Concrete;
-using GymApp.DataAccess.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Controllers
 {
     public class RegisterController : Controller
     {
-        private IUsersRepository _usersRepository;
-        public RegisterController(IUsersRepository usersRepository) 
+        
+        public RegisterController() 
         {
-            _usersRepository= usersRepository;
+            
         }
 
         [HttpGet]
@@ -19,10 +18,9 @@ namespace GymApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Member u)
+        public IActionResult Index(Member m)
         {
-            u.UserStatus = true;
-            _usersRepository.Add(u);
+
             return RedirectToAction("Index", "Login");
         }
     }

@@ -1,16 +1,21 @@
-﻿using GymApp.DataAccess.Abstract;
-using GymApp.Models;
+﻿using DataAccessLayer.Abstract;
+using EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GymApp.DataAccess.Concrete.InMemory
+namespace DataAccessLayer.Repositories.InMemory
 {
-    public class FakeTrainerRepository : ITrainerRepository
+    public class InMemoryTrainerRepository : ITrainerDal
     {
         private IQueryable<Trainer> _trainers;
-        public IQueryable<Trainer> Trainers => _trainers;
 
-        public FakeTrainerRepository() 
+        public InMemoryTrainerRepository()
         {
-            _trainers = new List<Trainer>() 
+            _trainers = new List<Trainer>()
             {
                 new Trainer() {TrainerId=1, CategoryId=1, FirstName="Yusuf", LastName="Dilekci", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer1.jpg"},
                 new Trainer() {TrainerId=2, CategoryId=1, FirstName="Sadik", LastName="Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer2.jpg"},
@@ -22,9 +27,30 @@ namespace GymApp.DataAccess.Concrete.InMemory
 
             }.AsQueryable();
         }
-        public void Add(Trainer trainer)
+
+        public void Add(Trainer entity)
         {
-            _trainers.ToList().Add(trainer);    
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Trainer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Trainer Get(Expression<Func<Trainer, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Trainer> GetAll(Expression<Func<Trainer, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Trainer entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

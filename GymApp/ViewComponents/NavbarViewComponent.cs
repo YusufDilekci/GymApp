@@ -1,5 +1,5 @@
-﻿using GymApp.DataAccess.Abstract;
-using GymApp.Models;
+﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,14 +7,13 @@ namespace GymApp.ViewComponents
 {
     public class NavbarViewComponent : ViewComponent
     {
-        //private readonly ToDoContext db;
+        //private readonly Context db;
 
-        //public PriorityListViewComponent(ToDoContext context) => db = context;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryService _categoryService;
 
-        public NavbarViewComponent(ICategoryRepository categoryRepository)
+        public NavbarViewComponent(ICategoryService categoryService)
         {
-            _categoryRepository= categoryRepository;
+            _categoryService = categoryService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -24,7 +23,7 @@ namespace GymApp.ViewComponents
 
         private Task<List<Category>> GetItemsAsync()
         {
-            return Task.FromResult(_categoryRepository!.Categories!.ToList());
+            return Task.FromResult(_categoryService!.GetAll());
         }
     }
 }

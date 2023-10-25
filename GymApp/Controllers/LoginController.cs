@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace GymApp.Controllers
 {
@@ -10,9 +12,9 @@ namespace GymApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Users users)
+        public IActionResult Index(Member m)
         {
-            var a = User.Identity.Name;
+            
             return View();
         }
     }

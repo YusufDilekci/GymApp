@@ -11,10 +11,10 @@
    
 </head>
     <body>
-        @await Html.PartialAsync("~/Views/Folder/MessagePartial.cshtml")
         @await Component.InvokeAsync("Navbar")
 
         @RenderBody()
+
         <section id="footerPart">
             <div class="container">
                 <footer class="">

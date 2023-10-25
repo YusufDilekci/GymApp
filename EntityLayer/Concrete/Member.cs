@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoreLayer.DataAccess.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Member
+    public class Member : IEntity
     {
         [Key]
         public int MemberId { get; set; }
@@ -16,7 +17,7 @@ namespace EntityLayer.Concrete
         public string MemberEmail { get; set; }
         public string MemberPassword { get; set; }
         public bool MemberStatus { get; set; }
-        public List<MemberCategory>? Categories { get; } = new();
+        public List<MemberCategory>? Categories { get; set; }
         public List<MemberTrainer>? Trainers { get; set; }
     }
 }

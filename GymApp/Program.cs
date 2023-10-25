@@ -1,14 +1,15 @@
-using GymApp.DataAccess.Abstract;
-using GymApp.DataAccess.Concrete.InMemory;
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Repositories.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<ITrainerRepository, FakeTrainerRepository>();
-builder.Services.AddTransient<ICategoryRepository, FakeCategoryRepository>();
-builder.Services.AddTransient<IUsersRepository, FakeUsersRepository>();
+builder.Services.AddTransient<ICategoryService, CategoryManager>();
+builder.Services.AddTransient<ICategoryDal, EfCategoryRepository>();
 
 var app = builder.Build();
 

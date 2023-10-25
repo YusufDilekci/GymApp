@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
     {
         public int MemberId { get; set; }
         public int CategoryId { get; set; }
-        public Member Member { get; set; } = null!;
-        public Category Category { get; set; } = null!;
+        public Member Member { get; set; }
+        public Category Category { get; set; }
     }
 }

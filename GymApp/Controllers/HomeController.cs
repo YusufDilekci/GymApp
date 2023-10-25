@@ -1,5 +1,7 @@
-﻿using GymApp.DataAccess.Abstract;
+﻿
 
+using BusinessLayer.Abstract;
+using GymApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Mail;
@@ -10,19 +12,28 @@ namespace GymApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ITrainerRepository _trainerRepository;
-        private readonly ICategoryRepository _categoryRepository;
-        public HomeController(ILogger<HomeController> logger, ITrainerRepository trainerRepository, ICategoryRepository categoryRepository)
+        private ICategoryService _categoryService;
+
+        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService)
         {
             _logger = logger;
-            _trainerRepository = trainerRepository;
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
+
         }
 
         public IActionResult Index()
         {
-            
-            var categories = _categoryRepository.Categories.ToList();
+
+            var categories = _categoryService.GetAll().Select(i => new CategoryDescriptionImageViewModel
+            {
+                CategoryId = i.CategoryId,
+                CategoryName = i.CategoryName,
+                CategoryInfo = i.CategoryInfo,
+                CategoryPrice = i.CategoryPrice,
+                CategoryImages = i.Images.Where(x => x.CategoryId == i.CategoryId).Select(x => x.ImageName).ToList(),
+                CategoryDescriptions = i.Descriptions.Where(x => x.CategoryId == i.CategoryId).Select(x => x.DescriptionName).ToList()
+            }).ToList();
+
             return View(categories);
         }
 
@@ -36,8 +47,7 @@ namespace GymApp.Controllers
         [Route("/Trainers")]
         public IActionResult Trainers()
         {
-            var trainers = _trainerRepository.Trainers.ToList();
-            return View(trainers);
+            return View();
             
         }
 
@@ -53,37 +63,34 @@ namespace GymApp.Controllers
         }
 
         [Route("/Fitness/{id?}")]
-        public IActionResult Fitness(int categoryId)
+        public IActionResult Fitness()
         {
-            var category = _categoryRepository.Categories.Where(i => i.CategoryId == categoryId).FirstOrDefault();
-            return View(category);
+            return View();
         }
         [Route("/Kickbox/{id?}")]
-        public IActionResult Kickbox(int categoryId)
+        public IActionResult Kickbox()
         {
-            var category = _categoryRepository.Categories.Where(i => i.CategoryId == categoryId).FirstOrDefault();
-            return View(category);
+            
+            return View();
         }
 
         [Route("/Pilates/{id?}")]
-        public IActionResult Pilates(int categoryId)
-        {
-            var category = _categoryRepository.Categories.Where(i => i.CategoryId == categoryId).FirstOrDefault();
-            return View(category);
+        public IActionResult Pilates()
+        { 
+            return View();
         }
 
         [Route("/Zumba/{id?}")]
-        public IActionResult Zumba(int categoryId)
+        public IActionResult Zumba()
         {
-            var category = _categoryRepository.Categories.Where(i => i.CategoryId == categoryId).FirstOrDefault();
-            return View(category);
+            
+            return View();
         }
 
         [Route("/Coaching/{id?}")]
-        public IActionResult Coaching(int categoryId)
+        public IActionResult Coaching()
         {
-            var category = _categoryRepository.Categories.Where(i => i.CategoryId == categoryId).FirstOrDefault();
-            return View(category);
+            return View();
         }
     }
 }
