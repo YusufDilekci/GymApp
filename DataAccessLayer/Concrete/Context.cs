@@ -58,7 +58,7 @@ namespace DataAccessLayer.Concrete
 
             modelBuilder.Entity<Image>()
                 .HasData(
-                    new Image() { ImageId = 1, CategoryId = 1, ImageName = "fitness1.jpg" },
+                    new Image() { ImageId = 1, CategoryId = 1, ImageName = "fitness1.jpg"},
                     new Image() { ImageId = 2, CategoryId = 1, ImageName = "fitness2.jpg" },
                     new Image() { ImageId = 3, CategoryId = 1, ImageName = "fitness3.jpg" },
                     new Image() { ImageId = 4, CategoryId = 2, ImageName = "kickbox1.jpg" },
@@ -73,6 +73,17 @@ namespace DataAccessLayer.Concrete
                     new Image() { ImageId = 13, CategoryId = 5, ImageName = "coaching1.jpg" },
                     new Image() { ImageId = 14, CategoryId = 5, ImageName = "coaching2.jpg" },
                     new Image() { ImageId = 15, CategoryId = 5, ImageName = "coaching3.jpg" }
+                );
+            modelBuilder.Entity<Trainer>()
+                .HasData(
+                    new Trainer() { TrainerId=1, CategoryId=1, NameSurname="Yusuf Dilekci", TrainerDescription="Fitness - Trainer - 1", TrainerImage="trainer1.jpg"},
+                    new Trainer() { TrainerId = 2, CategoryId = 1, NameSurname = "Savas Cebeci", TrainerDescription = "Fitness - Trainer - 2", TrainerImage = "trainer2.jpg" },
+                    new Trainer() { TrainerId = 3, CategoryId = 2, NameSurname = "Birol E.", TrainerDescription = "Kickbox - Trainer - 1", TrainerImage = "trainer3.jpg" },
+                    new Trainer() { TrainerId = 4, CategoryId = 3, NameSurname = "Mert A.", TrainerDescription = "Zumba - Trainer - 1", TrainerImage = "trainer4.jpg" },
+                    new Trainer() { TrainerId = 5, CategoryId = 3, NameSurname = "Azat T.", TrainerDescription = "Zumba - Trainer - 2", TrainerImage = "trainer5.jpg" },
+                    new Trainer() { TrainerId = 6, CategoryId = 4, NameSurname = "Oguz R.", TrainerDescription = "Pilates - Trainer - 1", TrainerImage = "trainer6.jpg" },
+                    new Trainer() { TrainerId = 7, CategoryId = 5, NameSurname = "Sadik S.", TrainerDescription = "Coaching - 1", TrainerImage = "trainer7.jpg" }
+
                 );
 
             base.OnModelCreating(modelBuilder);

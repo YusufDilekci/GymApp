@@ -10,7 +10,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<ICategoryService, CategoryManager>();
 builder.Services.AddTransient<ICategoryDal, EfCategoryRepository>();
-
+builder.Services.AddTransient<ITrainerService, TrainerManager>();
+builder.Services.AddTransient<ITrainerDal, EfTrainerRepository>();
+builder.Services.AddTransient<IDescriptionService, DescriptionManager>();
+builder.Services.AddTransient<IDescriptionDal, EfDescriptionRepository>();
+builder.Services.AddTransient<IImageService, ImageManager>();
+builder.Services.AddTransient<IImageDal, EfImageRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231025190927_mig-5")]
+    partial class mig5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,7 +406,11 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NameSurname")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -421,64 +427,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Trainers");
-
-                    b.HasData(
-                        new
-                        {
-                            TrainerId = 1,
-                            CategoryId = 1,
-                            NameSurname = "Yusuf Dilekci",
-                            TrainerDescription = "Fitness - Trainer - 1",
-                            TrainerImage = "trainer1.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 2,
-                            CategoryId = 1,
-                            NameSurname = "Savas Cebeci",
-                            TrainerDescription = "Fitness - Trainer - 2",
-                            TrainerImage = "trainer2.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 3,
-                            CategoryId = 2,
-                            NameSurname = "Birol E.",
-                            TrainerDescription = "Kickbox - Trainer - 1",
-                            TrainerImage = "trainer3.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 4,
-                            CategoryId = 3,
-                            NameSurname = "Mert A.",
-                            TrainerDescription = "Zumba - Trainer - 1",
-                            TrainerImage = "trainer4.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 5,
-                            CategoryId = 3,
-                            NameSurname = "Azat T.",
-                            TrainerDescription = "Zumba - Trainer - 2",
-                            TrainerImage = "trainer5.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 6,
-                            CategoryId = 4,
-                            NameSurname = "Oguz R.",
-                            TrainerDescription = "Pilates - Trainer - 1",
-                            TrainerImage = "trainer6.jpg"
-                        },
-                        new
-                        {
-                            TrainerId = 7,
-                            CategoryId = 5,
-                            NameSurname = "Sadik S.",
-                            TrainerDescription = "Coaching - 1",
-                            TrainerImage = "trainer7.jpg"
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Description", b =>

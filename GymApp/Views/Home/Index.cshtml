@@ -33,12 +33,13 @@
     <div class="container">
 
         <div class="row">
-            Hello
+            
+      
             @for (int i = 0; i < 3; i++)
             {
                 <div class="col-sm-12 col-lg-4">
                     <div class="card border-info" style="width: 18rem; height: 400px;">
-                        <img src="/images/@Model[i].CategoryImages[0]" class="card-img-top" style="height: 200px;">
+                        <img src="/images/@Model[i].CategoryImages[i]" class="card-img-top" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title">@Model[i].CategoryName</h5>
                             <p class="card-text">@Model[i].CategoryInfo</p>

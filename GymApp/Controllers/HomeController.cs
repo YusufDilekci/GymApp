@@ -13,12 +13,19 @@ namespace GymApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ICategoryService _categoryService;
+        private ITrainerService _trainerService;
+        private IDescriptionService _descriptionService;
+        private IImageService _imageService;
 
-        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService)
+        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService, ITrainerService trainerService,
+            IImageService imageService, IDescriptionService descriptionService
+            )
         {
             _logger = logger;
             _categoryService = categoryService;
-
+            _trainerService = trainerService;
+            _descriptionService= descriptionService;
+            _imageService = imageService;
         }
 
         public IActionResult Index()
@@ -29,25 +36,22 @@ namespace GymApp.Controllers
                 CategoryId = i.CategoryId,
                 CategoryName = i.CategoryName,
                 CategoryInfo = i.CategoryInfo,
-                CategoryPrice = i.CategoryPrice,
-                CategoryImages = i.Images.Where(x => x.CategoryId == i.CategoryId).Select(x => x.ImageName).ToList(),
-                CategoryDescriptions = i.Descriptions.Where(x => x.CategoryId == i.CategoryId).Select(x => x.DescriptionName).ToList()
+                CategoryPrice = i.CategoryPrice, //AQ entityframeworkcoru navigation props çalışmıyor
+                //CategoryImages = i.Images.Where(x => x.CategoryId == i.CategoryId).Select(x => x.ImageName).ToList(),
+                //CategoryDescriptions = i.Descriptions.Where(x => x.CategoryId == i.CategoryId).Select(x => x.DescriptionName).ToList()
+                CategoryDescriptions = _descriptionService.GetAll(x => x.CategoryId == i.CategoryId).Select(i => i.DescriptionName).ToList(),
+                CategoryImages = _imageService.GetAll(x => x.CategoryId == i.CategoryId).Select(i => i.ImageName).ToList()
             }).ToList();
 
             return View(categories);
         }
 
 
-        [Route("/Privacy")]
-        public IActionResult Privacy() 
-        {
-            return View();
-        }
-
         [Route("/Trainers")]
         public IActionResult Trainers()
         {
-            return View();
+            var trainers = _trainerService.GetAll();
+            return View(trainers);
             
         }
 

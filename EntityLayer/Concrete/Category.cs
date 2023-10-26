@@ -17,7 +17,7 @@ namespace EntityLayer.Concrete
         public double CategoryPrice { get; set; }
         public List<MemberCategory>? Members { get; set; }
         public  ICollection<Description>? Descriptions { get; set; }
-        public  ICollection<Image>? Images { get; set; }       
+        public  ICollection<Image>? Images { get; set; }
         public  ICollection<Trainer>? Trainers { get; set; }
     }
 }
