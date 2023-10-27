@@ -1,6 +1,5 @@
-﻿@{
+﻿@model Contact
 
-}
 <style>
     body {
         font-family: sans-serif;
@@ -17,17 +16,19 @@
     <center>
         <h1 style="color: #62c8d2;">Contact Us</h1>
 
-@*        {% from "Includes/_formhelpers.html" import render_field %}
-        <form method=post>
-            <dl>
+        <form asp-controller="Home" asp-action="Contact" method=post>
 
-
-                {{ render_field(form.email, class = "form-control") }}
-                {{ render_field(form.content, class = "form-control") }}
-
-            </dl>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input asp-for="ContactEmail" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+   
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea asp-for="ContactContent" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
             <button type="submit" class="btn btn-success">SEND</button>
-        </form>*@
+        </form>
     </center>
 </div>
 

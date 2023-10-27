@@ -31,9 +31,24 @@ namespace BusinessLayer.Concrete
             return _categoryDal.GetAll();
         }
 
+        public List<Category> GetAllWithDescriptionAndImage()
+        {
+            return _categoryDal.GetAllWithDescriptionAndImage();
+        }
+
         public Category GetById(int id)
         {
             return _categoryDal.Get(i => i.CategoryId == id);
+        }
+
+        public Category GetByName(string name)
+        {
+            return _categoryDal.Get(i => i.CategoryName == name);
+        }
+
+        public Category GetWithDescriptionAndImageById(int id)
+        {
+            return _categoryDal.GetWithDescriptionAndImageById(id);
         }
 
         public void Update(Category category)

@@ -7,7 +7,6 @@ namespace GymApp.ViewComponents
 {
     public class NavbarViewComponent : ViewComponent
     {
-        //private readonly Context db;
 
         private readonly ICategoryService _categoryService;
 

@@ -47,6 +47,21 @@ namespace DataAccessLayer.Repositories.InMemory
             throw new NotImplementedException();
         }
 
+        public List<Category> GetAllByMember(int memberId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Category> GetAllWithDescriptionAndImage()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category GetWithDescriptionAndImageById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Category entity)
         {
             

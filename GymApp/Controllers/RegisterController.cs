@@ -1,14 +1,18 @@
-﻿using EntityLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
+using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Controllers
 {
     public class RegisterController : Controller
     {
+        private IMemberService _memberService;
         
-        public RegisterController() 
+        public RegisterController(IMemberService memberService) 
         {
-            
+            _memberService= memberService;
         }
 
         [HttpGet]
@@ -18,10 +22,25 @@ namespace GymApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(Member m)
+        public IActionResult Index(Member member)
         {
+            MemberValidator memberValidator = new MemberValidator();
+            ValidationResult results = memberValidator.Validate(member);
+            if(results.IsValid)
+            {
+                member.MemberStatus = true;
+                _memberService.Add(member);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                foreach(var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
 
-            return RedirectToAction("Index", "Login");
+            return View();
         }
     }
 }

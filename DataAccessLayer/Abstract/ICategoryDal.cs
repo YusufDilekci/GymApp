@@ -10,5 +10,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICategoryDal : IEntityRepositoryBase<Category>
     {
+        List<Category> GetAllWithDescriptionAndImage();
+        Category GetWithDescriptionAndImageById(int id);
+        List<Category> GetAllByMember(int memberId);
     }
 }

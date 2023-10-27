@@ -95,5 +95,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<Description> Descriptions { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<MemberCategory> MemberCategories { get; set; }
+        public DbSet<MemberTrainer> MemberTrainers { get; set; }
     }
 }

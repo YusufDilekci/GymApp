@@ -13,6 +13,6 @@ namespace EntityLayer.Concrete
         [Key]
         public int ContactId { get; set; }
         public string ContactEmail { get; set; }
-        public string ConntactContent { get; set; }
+        public string ContactContent { get; set; }
     }
 }

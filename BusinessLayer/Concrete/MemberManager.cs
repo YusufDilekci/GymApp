@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +11,34 @@ namespace BusinessLayer.Concrete
 {
     public class MemberManager : IMemberService
     {
+        private IMemberDal _memberDal;
+        public MemberManager(IMemberDal memberDal) 
+        {
+            _memberDal= memberDal;
+        }
         public void Add(Member member)
         {
-            throw new NotImplementedException();
+            _memberDal.Add(member);
         }
 
         public void Delete(Member member)
         {
-            throw new NotImplementedException();
+            _memberDal.Delete(member);
         }
 
         public List<Member> GetAll()
         {
-            throw new NotImplementedException();
+            return _memberDal.GetAll();
         }
 
         public Member GetById(int id)
         {
-            throw new NotImplementedException();
+            return _memberDal.Get(i => i.MemberId == id);
         }
 
         public void Update(Member member)
         {
-            throw new NotImplementedException();
+             _memberDal.Update(member);
         }
     }
 }

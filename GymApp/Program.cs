@@ -16,6 +16,11 @@ builder.Services.AddTransient<IDescriptionService, DescriptionManager>();
 builder.Services.AddTransient<IDescriptionDal, EfDescriptionRepository>();
 builder.Services.AddTransient<IImageService, ImageManager>();
 builder.Services.AddTransient<IImageDal, EfImageRepository>();
+builder.Services.AddTransient<IContactService, ContactManager>();
+builder.Services.AddTransient<IContactDal, EfContactRepository>();
+builder.Services.AddTransient<IMemberService, MemberManager>();
+builder.Services.AddTransient<IMemberDal, EfMemberRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
