@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IMemberDal : IEntityRepositoryBase<Member>
     {
+        
     }
 }

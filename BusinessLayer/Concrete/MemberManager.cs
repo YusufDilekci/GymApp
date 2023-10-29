@@ -31,9 +31,24 @@ namespace BusinessLayer.Concrete
             return _memberDal.GetAll();
         }
 
+        public Member GetByEmail(string email)
+        {
+            return _memberDal.Get(i => i.MemberEmail == email);
+        }
+
+        public Member GetByEmailAndPassword(string email, string password)
+        {
+            return _memberDal.Get(i => i.MemberEmail== email && i.MemberPassword == password);
+        }
+
         public Member GetById(int id)
         {
             return _memberDal.Get(i => i.MemberId == id);
+        }
+
+        public Member GetByUsername(string username)
+        {
+            return _memberDal.Get(i => i.MemberUserName == username);
         }
 
         public void Update(Member member)

@@ -14,5 +14,8 @@ namespace BusinessLayer.Abstract
         void Delete(Member member);
         List<Member> GetAll();
         Member GetById(int id);
+        Member GetByEmailAndPassword(string email, string password);
+        Member GetByUsername(string username);
+        Member GetByEmail(string email);
     }
 }

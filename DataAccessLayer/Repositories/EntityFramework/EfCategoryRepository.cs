@@ -15,6 +15,19 @@ namespace DataAccessLayer.Repositories.EntityFramework
 {
     public class EfCategoryRepository : EfEntityRepositoryBase<Category, Context>, ICategoryDal
     {
+        public void AddByMember(int memberId, int categoryId)
+        {
+            using (Context context = new Context())
+            {
+                MemberCategory memberCategory = new MemberCategory();
+                memberCategory.MemberId = memberId;
+                memberCategory.CategoryId = categoryId;
+                context.MemberCategories.Add(memberCategory);
+
+                context.SaveChanges();
+            }
+        }
+
         public List<Category> GetAllByMember(int memberId)
         {
             using (Context context = new Context())

@@ -2,6 +2,9 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Repositories.EntityFramework;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,32 @@ builder.Services.AddTransient<IContactDal, EfContactRepository>();
 builder.Services.AddTransient<IMemberService, MemberManager>();
 builder.Services.AddTransient<IMemberDal, EfMemberRepository>();
 
+
+//Authorization
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+
+// Authorization gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
+// Amaç kullanýcýnýn giriþ veya kayýt olmadan sayfalarý görmemesidir.
+builder.Services.AddMvc();
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.LoginPath = "/Login/Index";
+    });
+
+// Session
+builder.Services.AddSession(); //Bu yöntem yerine SignInAsync() yöntemini kullanýcaðýz.
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,6 +66,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

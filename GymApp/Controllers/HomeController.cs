@@ -3,6 +3,7 @@
 using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using GymApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net.Mail;

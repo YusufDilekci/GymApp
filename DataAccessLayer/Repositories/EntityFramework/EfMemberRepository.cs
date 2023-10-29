@@ -12,5 +12,6 @@ namespace DataAccessLayer.Repositories.EntityFramework
 {
     public class EfMemberRepository : EfEntityRepositoryBase<Member, Context>, IMemberDal
     {
+
     }
 }

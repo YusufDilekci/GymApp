@@ -32,6 +32,11 @@ namespace DataAccessLayer.Repositories.InMemory
             _categories.ToList().Add(entity);
         }
 
+        public void AddByMember(int memberId, int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Category entity)
         {
             _categories.ToList().Remove(entity);
