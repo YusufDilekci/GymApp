@@ -31,6 +31,11 @@ namespace BusinessLayer.Concrete
             return _categoryDal.GetAll();
         }
 
+        public List<Category> GetAllByMember(int memberId)
+        {
+            return _categoryDal.GetAllByMember(memberId);
+        }
+
         public List<Category> GetAllWithDescriptionAndImage()
         {
             return _categoryDal.GetAllWithDescriptionAndImage();

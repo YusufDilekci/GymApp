@@ -14,5 +14,6 @@ namespace DataAccessLayer.Abstract
         Category GetWithDescriptionAndImageById(int id);
         List<Category> GetAllByMember(int memberId);
         void AddByMember(int memberId, int categoryId);
+        
     }
 }

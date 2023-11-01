@@ -27,6 +27,9 @@ namespace DataAccessLayer.Concrete
             modelBuilder.Entity<MemberTrainer>()
                 .HasKey(x => new { x.MemberId, x.TrainerId });
 
+            modelBuilder.Entity<PacketCategory>()
+                .HasKey(x => new { x.PacketId, x.CategoryId });
+
             modelBuilder.Entity<Category>()
                 .HasData(
                     new Category() { CategoryId = 1, CategoryName = "Fitness", CategoryInfo = "üiğiüğğşğşsğaüğ", CategoryPrice=1200},
@@ -86,6 +89,13 @@ namespace DataAccessLayer.Concrete
 
                 );
 
+            modelBuilder.Entity<Packet>()
+                .HasData(
+                    new Packet() { PacketId = 1, PacketType = "Normal", PacketPrice = 1500, PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol" },
+                    new Packet() { PacketId = 2, PacketType = "Pro", PacketPrice = 6000, PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol, Bireysel Koç, Supplement Desteği" },
+                    new Packet() { PacketId = 3, PacketType = "Jossoft Özel", PacketPrice = 10000, PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol, Bireysel Koç, Supplement Desteği, Whatsapp Görüşme, Pro Sporcularla Tanışma Fırsatı" }
+                );
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -95,7 +105,9 @@ namespace DataAccessLayer.Concrete
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<Description> Descriptions { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Packet> Packets { get; set; }
         public DbSet<MemberCategory> MemberCategories { get; set; }
         public DbSet<MemberTrainer> MemberTrainers { get; set; }
+        public DbSet<PacketCategory> PacketCategories { get; set; }
     }
 }

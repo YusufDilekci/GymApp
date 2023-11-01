@@ -30,9 +30,21 @@ namespace DataAccessLayer.Repositories.EntityFramework
 
         public List<Category> GetAllByMember(int memberId)
         {
+            //First Way
+
+            //using (Context context = new Context())
+            //{
+            //    return context.MemberCategories.Where(x => x.MemberId == memberId).Select(i => i.Category).ToList();
+
+            //}
+
+            //Second Way
             using (Context context = new Context())
             {
-                return context.MemberCategories.Where(x => x.MemberId == memberId).Select(i => i.Category).ToList();
+                return   (from category in context.Categories
+                         from member in category.Members!
+                         where member.MemberId == memberId
+                         select category).ToList();
 
             }
         }

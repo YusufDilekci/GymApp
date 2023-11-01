@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<Category>
 @{
 }
+<style>
+
+
+</style>
+
 <header>
     <div class="container">
         <div class="header-top">
@@ -8,7 +13,7 @@
                 <div class="col-md-6">
                     <div class="full">
                         <div class="logo">
-                            <a href="/Home"><img src="/images/trainer1.jpg" alt="#" width="60" height="60" /></a>
+                            <a href="/Home"><img src="~/images/trainer1.jpg"  height="60px" alt="#" /></a>
                         </div>
                     </div>
                 </div>
@@ -25,7 +30,10 @@
                         <!-- button section -->
                         <ul class="login">
                             <li class="login-modal">
-                                <a href="/Login/Index" class="login"><i class="fa fa-user"></i>Log Out</a>
+                                <a href="/Logout/Index" class="login"><i class="fa fa-user"></i>Log Out</a>
+                            </li>
+                            <li >
+                                <a href="/Member/Index"><i class="fa fa-shopping-cart"></i>My Profile</a>
                             </li>
                           @*  <li>
                                 <div class="cart-option">
@@ -69,15 +77,15 @@
                                                             <div id="menCollection" class="carousel slide" data-ride="carousel">
                                                                 <div class="carousel-inner">
                                                                     <div class="item active">
-                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/sports-master/images/match-banner1.jpg" alt="#" /></a></div>
+                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/images/yüzüncü-yıl.png" alt="#" /></a></div>
                                                                     </div>
                                                                     <!-- End Item -->
                                                                     <div class="item">
-                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/sports-master/images/match-banner1.jpg" alt="#" /></a></div>
+                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/images/yüzüncü-yıl.png" alt="#" /></a></div>
                                                                     </div>
                                                                     <!-- End Item -->
                                                                     <div class="item">
-                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/sports-master/images/match-banner1.jpg" alt="#" /></a></div>
+                                                                        <div class="banner-for-match"><a href="#"><img class="img-responsive" src="/images/yüzüncü-yıl.png" alt="#" /></a></div>
                                                                     </div>
                                                                     <!-- End Item -->
                                                                 </div>

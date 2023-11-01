@@ -17,13 +17,18 @@ namespace GymApp.Controllers
 
         public IActionResult Index()
         {
-            var email = User.Identity.Name;
+            var email = User.Identity!.Name;
             if(email == null )
             {
                 return NotFound();
             }
             var member = _memberService.GetByEmail(email);
             return View(member);
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
         }
     }
 }

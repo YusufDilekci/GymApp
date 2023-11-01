@@ -160,18 +160,18 @@ namespace GymApp.Controllers
             return View(model);
         }
 
-        [Route("/Coaching/{id?}")]
-        public IActionResult Coaching(int categoryId)
+        [Route("/Futbol/{id?}")]
+        public IActionResult Futbol(int categoryId)
         {
             var model = new CategoryDescriptionImageViewModel();
 
-            var coaching = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = coaching.CategoryId;
-            model.CategoryName = coaching.CategoryName;
-            model.CategoryInfo = coaching.CategoryInfo;
-            model.CategoryPrice = coaching.CategoryPrice;
-            model.CategoryDescriptions = coaching.Descriptions!.Where(x => x.CategoryId == coaching.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = coaching.Images!.Where(x => x.CategoryId == coaching.CategoryId).Select(x => x.ImageName).ToList();
+            var futbol = _categoryService.GetWithDescriptionAndImageById(categoryId);
+            model.CategoryId = futbol.CategoryId;
+            model.CategoryName = futbol.CategoryName;
+            model.CategoryInfo = futbol.CategoryInfo;
+            model.CategoryPrice = futbol.CategoryPrice;
+            model.CategoryDescriptions = futbol.Descriptions!.Where(x => x.CategoryId == futbol.CategoryId).Select(x => x.DescriptionName).ToList();
+            model.CategoryImages = futbol.Images!.Where(x => x.CategoryId == futbol.CategoryId).Select(x => x.ImageName).ToList();
 
             return View(model);
         }

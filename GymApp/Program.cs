@@ -23,6 +23,8 @@ builder.Services.AddTransient<IContactService, ContactManager>();
 builder.Services.AddTransient<IContactDal, EfContactRepository>();
 builder.Services.AddTransient<IMemberService, MemberManager>();
 builder.Services.AddTransient<IMemberDal, EfMemberRepository>();
+builder.Services.AddTransient<IPacketService, PacketManager>();
+builder.Services.AddTransient<IPacketDal, EfPacketRepository>();
 
 
 //Authorization

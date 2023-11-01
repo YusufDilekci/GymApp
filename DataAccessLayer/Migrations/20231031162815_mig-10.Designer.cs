@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231031162815_mig-10")]
+    partial class mig10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,29 +417,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("PacketId");
 
                     b.ToTable("Packets");
-
-                    b.HasData(
-                        new
-                        {
-                            PacketId = 1,
-                            PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol",
-                            PacketPrice = 1500.0,
-                            PacketType = "Normal"
-                        },
-                        new
-                        {
-                            PacketId = 2,
-                            PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol, Bireysel Koç, Supplement Desteği",
-                            PacketPrice = 6000.0,
-                            PacketType = "Pro"
-                        },
-                        new
-                        {
-                            PacketId = 3,
-                            PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol, Bireysel Koç, Supplement Desteği, Whatsapp Görüşme, Pro Sporcularla Tanışma Fırsatı",
-                            PacketPrice = 10000.0,
-                            PacketType = "Jossoft Özel"
-                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.PacketCategory", b =>
@@ -452,7 +431,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("PacketCategories");
+                    b.ToTable("PacketCategory");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Trainer", b =>
