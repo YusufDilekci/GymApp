@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class MemberCategory
+    public class MemberBranch
     {
         public int MemberId { get; set; }
-        public int CategoryId { get; set; }
+        public int BranchId { get; set; }
         public Member Member { get; set; }
-        public Category Category { get; set; }
+        public Branch Branch { get; set; }
     }
 }

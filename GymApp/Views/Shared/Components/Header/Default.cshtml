@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Category>
+﻿@model IEnumerable<Branch>
 @{
 }
 <style>
@@ -106,9 +106,9 @@
                                                     <li class="col-sm-4">
                                                         <ul class="menu-inner">
                                                             <li class="dropdown-header">Next Matchs</li>
-                                                            @foreach (var category in Model)
+                                                            @foreach (var branch in Model)
                                                             {
-                                                                <li><a href="/@category.CategoryName?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                                                <li><a href="/@branch.BranchName?BranchId=@branch.BranchId">@branch.BranchName</a></li>
                                                             }
                                                   
                                                         </ul>

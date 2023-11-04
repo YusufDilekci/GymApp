@@ -11,8 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<ICategoryService, CategoryManager>();
-builder.Services.AddTransient<ICategoryDal, EfCategoryRepository>();
+builder.Services.AddTransient<IBranchService, BranchManager>();
+builder.Services.AddTransient<IBranchDal, EfBranchRepository>();
 builder.Services.AddTransient<ITrainerService, TrainerManager>();
 builder.Services.AddTransient<ITrainerDal, EfTrainerRepository>();
 builder.Services.AddTransient<IDescriptionService, DescriptionManager>();

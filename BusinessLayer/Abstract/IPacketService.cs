@@ -14,6 +14,6 @@ namespace BusinessLayer.Abstract
         void Update(Packet packet);
         List<Packet> GetAll();
         Packet GetById(int packetId);
-        List<Packet> GetAllWithCategory();
+        List<Packet> GetAllWithBranch();
     }
 }

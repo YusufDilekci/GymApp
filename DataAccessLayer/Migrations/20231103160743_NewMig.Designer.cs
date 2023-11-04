@@ -3,6 +3,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231103160743_NewMig")]
+    partial class NewMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +79,7 @@ namespace DataAccessLayer.Migrations
                         {
                             BranchId = 5,
                             BranchInfo = "üiğiüğğşğşsğaüğ",
-                            BranchName = "Futbol",
+                            BranchName = "Coaching",
                             BranchPrice = 15.699999999999999
                         });
                 });
@@ -201,19 +203,19 @@ namespace DataAccessLayer.Migrations
                         {
                             DescriptionId = 13,
                             BranchId = 5,
-                            DescriptionName = "Futbol-1weıpüqrıpoıqwmskdf"
+                            DescriptionName = "Coaching-1weıpüqrıpoıqwmskdf"
                         },
                         new
                         {
                             DescriptionId = 14,
                             BranchId = 5,
-                            DescriptionName = "Futbol-2weıpüqrıpoıqwmskdf"
+                            DescriptionName = "Coaching-2weıpüqrıpoıqwmskdf"
                         },
                         new
                         {
                             DescriptionId = 15,
                             BranchId = 5,
-                            DescriptionName = "Futbol-3weıpüqrıpoıqwmskdf"
+                            DescriptionName = "Coaching-3weıpüqrıpoıqwmskdf"
                         });
                 });
 
@@ -315,19 +317,19 @@ namespace DataAccessLayer.Migrations
                         {
                             ImageId = 13,
                             BranchId = 5,
-                            ImageName = "futbol1.jpg"
+                            ImageName = "coaching1.jpg"
                         },
                         new
                         {
                             ImageId = 14,
                             BranchId = 5,
-                            ImageName = "futbol2.jpg"
+                            ImageName = "coaching2.jpg"
                         },
                         new
                         {
                             ImageId = 15,
                             BranchId = 5,
-                            ImageName = "futbol3.jpg"
+                            ImageName = "coaching3.jpg"
                         });
                 });
 
@@ -538,7 +540,7 @@ namespace DataAccessLayer.Migrations
                             TrainerId = 7,
                             BranchId = 5,
                             NameSurname = "Sadik S.",
-                            TrainerDescription = "Futbol - 1",
+                            TrainerDescription = "Coaching - 1",
                             TrainerImage = "trainer7.jpg"
                         });
                 });

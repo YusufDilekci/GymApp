@@ -1,5 +1,4 @@
 ﻿using CoreLayer.DataAccess.Entities;
-using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +9,10 @@ namespace EntityLayer.Concrete
 {
     public class Category : IEntity
     {
-        [Key]
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public string CategoryInfo { get; set; }
-        public double CategoryPrice { get; set; }
-        public List<MemberCategory>? Members { get; set; }
-        public List<PacketCategory>? Packets { get; set; }
-        public  ICollection<Description>? Descriptions { get; set; }
-        public  ICollection<Image>? Images { get; set; }
-        public  ICollection<Trainer>? Trainers { get; set; }
+        public string CategoryDescription { get; set; }
+        public string CategoryImage { get; set; }
+
     }
 }

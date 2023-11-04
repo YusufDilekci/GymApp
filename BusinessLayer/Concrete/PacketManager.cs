@@ -31,9 +31,9 @@ namespace BusinessLayer.Concrete
             return _packetDal.GetAll();
         }
 
-        public List<Packet> GetAllWithCategory()
+        public List<Packet> GetAllWithBranch()
         {
-            return _packetDal.GetAllWithCategory();
+            return _packetDal.GetAllWithBranch();
         }
 
         public Packet GetById(int packetId)

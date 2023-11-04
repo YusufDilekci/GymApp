@@ -1,4 +1,4 @@
-﻿@model List<CategoryDescriptionImageViewModel>
+﻿@model List<BranchDescriptionImageViewModel>
 @{
     ViewData["Title"] = "Home Page";
    
@@ -130,11 +130,11 @@
             {
                 <div class="col-sm-12 col-lg-4">
                     <div class="card border-info" style="width: 18rem; height: 400px;">
-                        <img src="/images/@Model[i].CategoryImages[i]" class="card-img-top" style="height: 200px;">
+                        <img src="/images/@Model[i].BranchImages[i]" class="card-img-top" style="height: 200px;">
                         <div class="card-body">
-                            <h5 class="card-title">@Model[i].CategoryName</h5>
-                            <p class="card-text">@Model[i].CategoryInfo</p>
-                            <a href="/@Model[i].CategoryName?categoryId=@Model[i].CategoryId" class="btn btn-primary">More Information</a>
+                            <h5 class="card-title">@Model[i].BranchName</h5>
+                            <p class="card-text">@Model[i].BranchInfo</p>
+                            <a href="/@Model[i].BranchName?BranchId=@Model[i].BranchId" class="btn btn-primary">More Information</a>
                         </div>
                     </div>
                 </div>
@@ -147,11 +147,11 @@
             {
                 <div class="col-sm-12 col-lg-6">
                     <div class="card border-info" style="width: 18rem; height: 400px;">
-                        <img src="/images/@Model[i].CategoryImages[0]" class="card-img-top" style="height: 200px;">
+                        <img src="/images/@Model[i].BranchImages[0]" class="card-img-top" style="height: 200px;">
                         <div class="card-body">
-                            <h5 class="card-title">@Model[i].CategoryName</h5>
-                            <p class="card-text">@Model[i].CategoryInfo</p>
-                            <a href="/@Model[i].CategoryName?categoryId=@Model[i].CategoryId" class="btn btn-primary">More Information</a>
+                            <h5 class="card-title">@Model[i].BranchName</h5>
+                            <p class="card-text">@Model[i].BranchInfo</p>
+                            <a href="/@Model[i].BranchName?BranchId=@Model[i].BranchId" class="btn btn-primary">More Information</a>
                         </div>
                     </div>
                 </div>

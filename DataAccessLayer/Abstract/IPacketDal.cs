@@ -10,6 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IPacketDal : IEntityRepositoryBase<Packet>
     {
-        List<Packet> GetAllWithCategory();
+        List<Packet> GetAllWithBranch();
     }
 }

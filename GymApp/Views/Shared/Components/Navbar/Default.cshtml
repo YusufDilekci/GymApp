@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model IEnumerable<Category>
+@model IEnumerable<Branch>
 @{
    
 }
@@ -27,9 +27,9 @@
                         </a>
                         <ul class="dropdown-menu">
 
-                            @foreach(var category in Model)
+                            @foreach(var branch in Model)
                             {
-                                <li><a class="dropdown-item" href="/@category.CategoryName?categoryId=@category.CategoryId">@category.CategoryName</a></li>
+                                <li><a class="dropdown-item" href="/@branch.BranchName?BranchId=@branch.BranchId">@branch.BranchName</a></li>
                             }        
                         </ul>
                     </li>

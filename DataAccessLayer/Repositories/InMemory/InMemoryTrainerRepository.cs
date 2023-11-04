@@ -17,13 +17,13 @@ namespace DataAccessLayer.Repositories.InMemory
         {
             _trainers = new List<Trainer>()
             {
-                new Trainer() {TrainerId=1, CategoryId=1, NameSurname="Yusuf Dilekci", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer1.jpg"},
-                new Trainer() {TrainerId=2, CategoryId=1, NameSurname="Sadik Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer2.jpg"},
-                new Trainer() {TrainerId=3, CategoryId=2, NameSurname="Birol Sahin", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer3.jpg"},
-                new Trainer() {TrainerId=4, CategoryId=2, NameSurname="Azat Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer4.jpg"},
-                new Trainer() {TrainerId=5, CategoryId=3, NameSurname="Mert Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer5.jpg"},
-                new Trainer() {TrainerId=6, CategoryId=4, NameSurname="Fatih Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer6.jpg"},
-                new Trainer() {TrainerId=7, CategoryId=5, NameSurname="James Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer7.jpg"},
+                new Trainer() {TrainerId=1, BranchId=1, NameSurname="Yusuf Dilekci", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer1.jpg"},
+                new Trainer() {TrainerId=2, BranchId=1, NameSurname="Sadik Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer2.jpg"},
+                new Trainer() {TrainerId=3, BranchId=2, NameSurname="Birol Sahin", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer3.jpg"},
+                new Trainer() {TrainerId=4, BranchId=2, NameSurname="Azat Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer4.jpg"},
+                new Trainer() {TrainerId=5, BranchId=3, NameSurname="Mert Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer5.jpg"},
+                new Trainer() {TrainerId=6, BranchId=4, NameSurname="Fatih Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer6.jpg"},
+                new Trainer() {TrainerId=7, BranchId=5, NameSurname="James Dincel", TrainerDescription="qwuıewqeouqw", TrainerImage="trainer7.jpg"},
 
             }.AsQueryable();
         }

@@ -13,12 +13,12 @@ namespace DataAccessLayer.Repositories.EntityFramework
 {
     public class EfPacketRepository : EfEntityRepositoryBase<Packet, Context>, IPacketDal
     {
-        public List<Packet> GetAllWithCategory()
+        public List<Packet> GetAllWithBranch()
         {
 
             using (Context context = new Context())
             {
-                return context.Packets.Include(i => i.Categories).ThenInclude(x => x.Category).ToList();
+                return context.Packets.Include(i => i.Branches).ThenInclude(x => x.Branch).ToList();
 
 
             }

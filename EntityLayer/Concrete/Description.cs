@@ -12,8 +12,8 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int DescriptionId { get; set; }
-        public int CategoryId { get; set; }
+        public int BranchId { get; set; }
         public string DescriptionName { get; set; }
-        public Category Category { get; set; }
+        public Branch Branch { get; set; }
     }
 }

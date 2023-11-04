@@ -17,7 +17,7 @@ namespace EntityLayer.Concrete
         public string MemberEmail { get; set; }
         public string MemberPassword { get; set; }
         public bool MemberStatus { get; set; }
-        public List<MemberCategory>? Categories { get; set; }
+        public List<MemberBranch>? Branches { get; set; }
         public List<MemberTrainer>? Trainers { get; set; }
     }
 }

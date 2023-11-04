@@ -1,7 +1,7 @@
 ﻿@model List<Packet>
 @{
     Layout = "_MemberLayout";
-    var Categories = (List<Category>)ViewBag.Categories;
+    var Branches = (List<Branch>)ViewBag.Branches;
     
 }
 
@@ -78,14 +78,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var j in Categories)
+                @foreach(var j in Branches)
                 {
                     <tr>
-                    <th scope="row" class="text-start">@j.CategoryName</th>
+                    <th scope="row" class="text-start">@j.BranchName</th>
                     @foreach(var packet in Model)
                     {
 
-                        if (packet.Categories.Any(i => i.Category.CategoryName == j.CategoryName))
+                        if (packet.Branches.Any(i => i.Branch.BranchName == j.BranchName))
                         {
                             <td><svg class="bi" width="24" height="24"><use xlink:href="#check" /></svg></td>
                         }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class PacketCategory
+    public class PacketBranch
     {
         public int PacketId { get; set; }
-        public int CategoryId { get; set; }
+        public int BranchId { get; set; }
         public Packet? Packet { get; set; }
-        public Category? Category { get; set; }
+        public Branch? Branch { get; set; }
 
     }
 }

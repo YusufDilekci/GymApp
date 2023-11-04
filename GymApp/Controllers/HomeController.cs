@@ -15,16 +15,16 @@ namespace GymApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ICategoryService _categoryService;
+        private IBranchService _BranchService;
         private ITrainerService _trainerService;
         private IContactService _contactService;
 
-        public HomeController(ILogger<HomeController> logger, ICategoryService categoryService, ITrainerService trainerService,
+        public HomeController(ILogger<HomeController> logger, IBranchService BranchService, ITrainerService trainerService,
             IContactService contactService
             )
         {
             _logger = logger;
-            _categoryService = categoryService;
+            _BranchService = BranchService;
             _trainerService = trainerService;
             _contactService = contactService;
         }
@@ -32,15 +32,15 @@ namespace GymApp.Controllers
         public IActionResult Index()
         {
 
-            var categories = _categoryService.GetAllWithDescriptionAndImage().Select(i => new CategoryDescriptionImageViewModel
+            var categories = _BranchService.GetAllWithDescriptionAndImage().Select(i => new BranchDescriptionImageViewModel
             {
-                CategoryId = i.CategoryId,
-                CategoryName = i.CategoryName,
-                CategoryInfo = i.CategoryInfo,
-                CategoryPrice = i.CategoryPrice, //AQ entityframeworkcoru navigation props çalışmıyor.
+                BranchId = i.BranchId,
+                BranchName = i.BranchName,
+                BranchInfo = i.BranchInfo,
+                BranchPrice = i.BranchPrice, //AQ entityframeworkcoru navigation props çalışmıyor.
                                                  //Not: Include method kullanmak gerekiyormuş Sorry entito
-                CategoryDescriptions = i.Descriptions!.Where(x => x.CategoryId == i.CategoryId).Select(x => x.DescriptionName).ToList(),
-                CategoryImages = i.Images!.Where(x => x.CategoryId == i.CategoryId).Select(x => x.ImageName).ToList()
+                BranchDescriptions = i.Descriptions!.Where(x => x.BranchId == i.BranchId).Select(x => x.DescriptionName).ToList(),
+                BranchImages = i.Images!.Where(x => x.BranchId == i.BranchId).Select(x => x.ImageName).ToList()
             }).ToList();
 
             return View(categories);
@@ -74,10 +74,10 @@ namespace GymApp.Controllers
                 return View("Index");
             }
 
-            var category = _categoryService.GetByName(query);
-            if (category != null)
+            var Branch = _BranchService.GetByName(query);
+            if (Branch != null)
             {
-                return RedirectToAction(string.Format("{0}", category.CategoryName), "Home", new { categoryId = category.CategoryId });
+                return RedirectToAction(string.Format("{0}", Branch.BranchName), "Home", new { BranchId = Branch.BranchId });
             }
             return RedirectToAction("Index", "Home");
         }
@@ -95,83 +95,83 @@ namespace GymApp.Controllers
             return View();
         }
         [Route("/Fitness/{id?}")]
-        public IActionResult Fitness(int categoryId)
+        public IActionResult Fitness(int BranchId)
         {
-            var model = new CategoryDescriptionImageViewModel();
+            var model = new BranchDescriptionImageViewModel();
 
-            var fitness = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = fitness.CategoryId;
-            model.CategoryName = fitness.CategoryName;
-            model.CategoryInfo = fitness.CategoryInfo;
-            model.CategoryPrice = fitness.CategoryPrice;
-            model.CategoryDescriptions = fitness.Descriptions!.Where(x => x.CategoryId == fitness.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = fitness.Images!.Where(x => x.CategoryId == fitness.CategoryId).Select(x => x.ImageName).ToList();
+            var fitness = _BranchService.GetWithDescriptionAndImageById(BranchId);
+            model.BranchId = fitness.BranchId;
+            model.BranchName = fitness.BranchName;
+            model.BranchInfo = fitness.BranchInfo;
+            model.BranchPrice = fitness.BranchPrice;
+            model.BranchDescriptions = fitness.Descriptions!.Where(x => x.BranchId == fitness.BranchId).Select(x => x.DescriptionName).ToList();
+            model.BranchImages = fitness.Images!.Where(x => x.BranchId == fitness.BranchId).Select(x => x.ImageName).ToList();
 
 
             return View(model);
         }
         [Route("/Kickbox/{id?}")]
-        public IActionResult Kickbox(int categoryId)
+        public IActionResult Kickbox(int BranchId)
         {
 
-            var model = new CategoryDescriptionImageViewModel();
+            var model = new BranchDescriptionImageViewModel();
 
-            var kickbox = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = kickbox.CategoryId;
-            model.CategoryName = kickbox.CategoryName;
-            model.CategoryInfo = kickbox.CategoryInfo;
-            model.CategoryPrice = kickbox.CategoryPrice;
-            model.CategoryDescriptions = kickbox.Descriptions!.Where(x => x.CategoryId == kickbox.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = kickbox.Images!.Where(x => x.CategoryId == kickbox.CategoryId).Select(x => x.ImageName).ToList();
+            var kickbox = _BranchService.GetWithDescriptionAndImageById(BranchId);
+            model.BranchId = kickbox.BranchId;
+            model.BranchName = kickbox.BranchName;
+            model.BranchInfo = kickbox.BranchInfo;
+            model.BranchPrice = kickbox.BranchPrice;
+            model.BranchDescriptions = kickbox.Descriptions!.Where(x => x.BranchId == kickbox.BranchId).Select(x => x.DescriptionName).ToList();
+            model.BranchImages = kickbox.Images!.Where(x => x.BranchId == kickbox.BranchId).Select(x => x.ImageName).ToList();
 
             return View(model);
         }
 
         [Route("/Pilates/{id?}")]
-        public IActionResult Pilates(int categoryId)
+        public IActionResult Pilates(int BranchId)
         {
-            var model = new CategoryDescriptionImageViewModel();
+            var model = new BranchDescriptionImageViewModel();
 
-            var pilates = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = pilates.CategoryId;
-            model.CategoryName = pilates.CategoryName;
-            model.CategoryInfo = pilates.CategoryInfo;
-            model.CategoryPrice = pilates.CategoryPrice;
-            model.CategoryDescriptions = pilates.Descriptions!.Where(x => x.CategoryId == pilates.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = pilates.Images!.Where(x => x.CategoryId == pilates.CategoryId).Select(x => x.ImageName).ToList();
+            var pilates = _BranchService.GetWithDescriptionAndImageById(BranchId);
+            model.BranchId = pilates.BranchId;
+            model.BranchName = pilates.BranchName;
+            model.BranchInfo = pilates.BranchInfo;
+            model.BranchPrice = pilates.BranchPrice;
+            model.BranchDescriptions = pilates.Descriptions!.Where(x => x.BranchId == pilates.BranchId).Select(x => x.DescriptionName).ToList();
+            model.BranchImages = pilates.Images!.Where(x => x.BranchId == pilates.BranchId).Select(x => x.ImageName).ToList();
 
             return View(model);
         }
 
         [Route("/Zumba/{id?}")]
-        public IActionResult Zumba(int categoryId)
+        public IActionResult Zumba(int BranchId)
         {
 
-            var model = new CategoryDescriptionImageViewModel();
+            var model = new BranchDescriptionImageViewModel();
 
-            var zumba = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = zumba.CategoryId;
-            model.CategoryName = zumba.CategoryName;
-            model.CategoryInfo = zumba.CategoryInfo;
-            model.CategoryPrice = zumba.CategoryPrice;
-            model.CategoryDescriptions = zumba.Descriptions!.Where(x => x.CategoryId == zumba.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = zumba.Images!.Where(x => x.CategoryId == zumba.CategoryId).Select(x => x.ImageName).ToList();
+            var zumba = _BranchService.GetWithDescriptionAndImageById(BranchId);
+            model.BranchId = zumba.BranchId;
+            model.BranchName = zumba.BranchName;
+            model.BranchInfo = zumba.BranchInfo;
+            model.BranchPrice = zumba.BranchPrice;
+            model.BranchDescriptions = zumba.Descriptions!.Where(x => x.BranchId == zumba.BranchId).Select(x => x.DescriptionName).ToList();
+            model.BranchImages = zumba.Images!.Where(x => x.BranchId == zumba.BranchId).Select(x => x.ImageName).ToList();
 
             return View(model);
         }
 
         [Route("/Futbol/{id?}")]
-        public IActionResult Futbol(int categoryId)
+        public IActionResult Futbol(int BranchId)
         {
-            var model = new CategoryDescriptionImageViewModel();
+            var model = new BranchDescriptionImageViewModel();
 
-            var futbol = _categoryService.GetWithDescriptionAndImageById(categoryId);
-            model.CategoryId = futbol.CategoryId;
-            model.CategoryName = futbol.CategoryName;
-            model.CategoryInfo = futbol.CategoryInfo;
-            model.CategoryPrice = futbol.CategoryPrice;
-            model.CategoryDescriptions = futbol.Descriptions!.Where(x => x.CategoryId == futbol.CategoryId).Select(x => x.DescriptionName).ToList();
-            model.CategoryImages = futbol.Images!.Where(x => x.CategoryId == futbol.CategoryId).Select(x => x.ImageName).ToList();
+            var futbol = _BranchService.GetWithDescriptionAndImageById(BranchId);
+            model.BranchId = futbol.BranchId;
+            model.BranchName = futbol.BranchName;
+            model.BranchInfo = futbol.BranchInfo;
+            model.BranchPrice = futbol.BranchPrice;
+            model.BranchDescriptions = futbol.Descriptions!.Where(x => x.BranchId == futbol.BranchId).Select(x => x.DescriptionName).ToList();
+            model.BranchImages = futbol.Images!.Where(x => x.BranchId == futbol.BranchId).Select(x => x.ImageName).ToList();
 
             return View(model);
         }

@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Controllers
 {
-    public class CategoryController : Controller
+    public class BranchController : Controller
     {
         
-        public CategoryController() 
+        public BranchController() 
         {
             
         }

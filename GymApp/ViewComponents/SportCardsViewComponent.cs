@@ -6,12 +6,12 @@ namespace GymApp.ViewComponents
 {
     public class SportCardsViewComponent : ViewComponent
     {
-        private readonly ICategoryService _categoryService;
+        private readonly IBranchService _BranchService;
         private readonly IMemberService _memberService;
 
-        public SportCardsViewComponent(ICategoryService categoryService, IMemberService memberService)
+        public SportCardsViewComponent(IBranchService BranchService, IMemberService memberService)
         {
-            _categoryService = categoryService;
+            _BranchService = BranchService;
             _memberService = memberService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
@@ -20,11 +20,11 @@ namespace GymApp.ViewComponents
             return View(items);
         }
 
-        private Task<List<Category>> GetItemsAsync()
+        private Task<List<Branch>> GetItemsAsync()
         {
             var email = User.Identity!.Name;
             var member = _memberService.GetByEmail(email);
-            return Task.FromResult(_categoryService!.GetAllByMember(member.MemberId));
+            return Task.FromResult(_BranchService!.GetAllByMember(member.MemberId));
         }
     }
 }

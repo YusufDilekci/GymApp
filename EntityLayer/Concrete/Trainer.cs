@@ -12,11 +12,11 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int TrainerId { get; set; }
-        public int CategoryId { get; set; }
+        public int BranchId { get; set; }
         public string NameSurname { get; set; }
         public string TrainerDescription { get; set; }
         public string TrainerImage { get; set; }
-        public Category Category { get; set; }
+        public Branch Branch { get; set; }
         public List<MemberTrainer> Members { get; set; }
     }
 }

@@ -8,11 +8,11 @@ namespace GymApp.ViewComponents
     public class NavbarViewComponent : ViewComponent
     {
 
-        private readonly ICategoryService _categoryService;
+        private readonly IBranchService _BranchService;
 
-        public NavbarViewComponent(ICategoryService categoryService)
+        public NavbarViewComponent(IBranchService BranchService)
         {
-            _categoryService = categoryService;
+            _BranchService = BranchService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -20,9 +20,9 @@ namespace GymApp.ViewComponents
             return View(items);
         }
 
-        private Task<List<Category>> GetItemsAsync()
+        private Task<List<Branch>> GetItemsAsync()
         {
-            return Task.FromResult(_categoryService!.GetAll());
+            return Task.FromResult(_BranchService!.GetAll());
         }
     }
 }
