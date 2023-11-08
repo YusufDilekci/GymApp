@@ -1,6 +1,8 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using CoreLayer.Entities.Concrete;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories.EntityFramework;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +27,18 @@ builder.Services.AddTransient<IMemberService, MemberManager>();
 builder.Services.AddTransient<IMemberDal, EfMemberRepository>();
 builder.Services.AddTransient<IPacketService, PacketManager>();
 builder.Services.AddTransient<IPacketDal, EfPacketRepository>();
-
+builder.Services.AddTransient<ICategoryService, CategoryManager>();
+builder.Services.AddTransient<ICategoryDal, EfCategoryRepository>();
+builder.Services.AddTransient<ISubCategoryService, SubCategoryManager>();
+builder.Services.AddTransient<ISubCategoryDal, EfSubCategoryRepository>();
+builder.Services.AddTransient<IProductService, ProductManager>();
+builder.Services.AddTransient<IProductDal, EfProductRepository>();
+builder.Services.AddTransient<ICartService, CartManager>();
+builder.Services.AddTransient<ICartDal, EfCartRepository>();
+builder.Services.AddTransient<ICartLineService, CartLineManager>();
+builder.Services.AddTransient<ICartLineDal, EfCartLineRepository>();
+builder.Services.AddTransient<IUserService, UserManager>();
+builder.Services.AddTransient<IUserDal, EfUserRepository>();
 
 //Authorization
 
@@ -38,7 +51,18 @@ builder.Services.AddMvc(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
-// Authorization gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
+//Identity
+builder.Services.AddDbContext<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>(x =>
+{
+    x.Password.RequireUppercase = false;
+    x.Password.RequireNonAlphanumeric = false;
+})
+    .AddEntityFrameworkStores<Context>();
+
+
+
+// Authentication gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
 // Amaç kullanýcýnýn giriþ veya kayýt olmadan sayfalarý görmemesidir.
 builder.Services.AddMvc();
 builder.Services.AddAuthentication(
@@ -48,8 +72,20 @@ builder.Services.AddAuthentication(
         x.LoginPath = "/Login/Index";
     });
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly= true;
+    options.ExpireTimeSpan= TimeSpan.FromMinutes(5);
+
+    options.LoginPath = "/Login/Index";
+    options.SlidingExpiration = true;
+});
+
 // Session
-builder.Services.AddSession(); //Bu yöntem yerine SignInAsync() yöntemini kullanýcaðýz.
+//builder.Services.AddSession(); Bu yöntem yerine SignInAsync() yöntemini kullanýcaðýz.
+
+
+
 
 
 var app = builder.Build();
@@ -70,7 +106,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseAuthentication();
-app.UseSession();
+
+//app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

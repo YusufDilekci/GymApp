@@ -33,7 +33,7 @@
                                 <a href="/Logout/Index" class="login"><i class="fa fa-user"></i>Log Out</a>
                             </li>
                             <li >
-                                <a href="/Member/Index"><i class="fa fa-shopping-cart"></i>My Profile</a>
+                                <a href="/Member/Index"><i class="fa fa-shopping-cart"></i>My Account</a>
                             </li>
                           @*  <li>
                                 <div class="cart-option">
@@ -108,7 +108,7 @@
                                                             <li class="dropdown-header">Next Matchs</li>
                                                             @foreach (var branch in Model)
                                                             {
-                                                                <li><a href="/@branch.BranchName?BranchId=@branch.BranchId">@branch.BranchName</a></li>
+                                                                <li><a href="/Sport/@branch.BranchName?BranchId=@branch.BranchId">@branch.BranchName</a></li>
                                                             }
                                                   
                                                         </ul>

@@ -1,0 +1,6 @@
+﻿
+@{
+    Layout = "_EtradeLayout";
+}
+
+@await Component.InvokeAsync("SubCategoryCards", new{categoryId=ViewBag.CategoryId})

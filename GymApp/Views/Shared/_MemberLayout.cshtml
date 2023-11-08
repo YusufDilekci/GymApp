@@ -19,7 +19,77 @@
 <body>
     <div class="wrapper">
 
-        @await Component.InvokeAsync("SideBar")
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="h-100">
+                <div class="sidebar-logo">
+                    <a href="#">Jossoft</a>
+                </div>
+                <!-- Sidebar Navigation -->
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">
+                        Tools & Components
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fa-regular fa-user pe-2"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#başvurularım"
+                           aria-expanded="false" aria-controls="başvurularım">
+                            <i class="fa-solid fa-sliders pe-2"></i>
+                            Başvurularım
+                        </a>
+                        <ul id="başvurularım" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">İş İmkanı</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link">Burs veya İndirim</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/Member" class="sidebar-link">
+                            <i class="fa-solid fa-sliders pe-2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/" class="sidebar-link">
+                            <i class="fa-solid fa-list pe-2"></i>
+                            Anasayfa
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="/Logout/Index" class="sidebar-link">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            Log Out
+                        </a>
+                    </li>
+                    <li class="sidebar-header">
+                        Ürün Satın Al
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#multi"
+                           aria-expanded="false" aria-controls="multi">
+                            <i class="fa-solid fa-share-nodes pe-2"></i>
+                            Alışveriş
+                        </a>
+                        <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="/Packet/Index" class="sidebar-link">Avantajlı Spor Paketleri</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="/Etrade" class="sidebar-link">Jossoft Mağaza</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
 
         <!-- Main Component -->
         <div class="main">

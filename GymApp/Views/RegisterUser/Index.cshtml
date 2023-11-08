@@ -1,0 +1,89 @@
+﻿@model SignUpViewModel
+@{
+    Layout = "_SignInUpLayout";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<style>
+    body{
+        
+    }
+    label{
+        color:aliceblue;
+    }
+    p{
+        color: aliceblue;
+        
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(0, -50%);
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 720px;
+    }
+
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="col-md-6 text-center">
+            <form class="row g-3" asp-action="Index">
+                <div class="col-md-12">
+                    <img class="w-25 " src="~/images/trainer1.jpg" alt="">
+                 </div>
+        
+                <div class="col-md-6">
+                    <span asp-validation-for="NameSurname" class="text-danger"></span>
+                        <input asp-for="NameSurname" type="text" class="form-control" id="inputEmail4" placeholder="Ad Soyad">
+                </div>
+                <div class="col-md-6">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                        <input asp-for="UserName" type="text" class="form-control" id="inputPassword4" placeholder="Kullanıcı Adı">
+                </div>
+                <div class="col-12">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <input asp-for="Email" type="email" class="form-control" id="inputAddress" placeholder="name@gmail.com">
+                </div>
+                <div class="col-md-6">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <input asp-for="Password" type="password" class="form-control" id="inputAddress2" placeholder="Şifre">
+                </div>
+                <div class="col-md-6">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="inputCity" placeholder="Şifre Tekrarı">>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Kullanım Şartlarını Okudum, Onaylıyorum.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="btn-signUp col-12">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+                <p class="haveAccount"><small>Bir hesabınız var mı?</small></p>
+                <a class="btn btn-sm btn-light btn-block" href="/Login/Index">Giriş Yap</a>
+                <div class="text-danger" asp-validation-summary="ModelOnly">
+            </div>
+        </form>
+        </div>
+        <div class="col-md-6">
+            <p class="mt-1"><small>Jossoft | Tüm hakları saklıdır &copy; @DateTime.Now.Year</small></p>
+        </div>
+    
+    
+    </div>
+</body>
+
+

@@ -1,5 +1,4 @@
-﻿using CoreLayer.DataAccess.Entities;
-using CoreLayer.DataAccess.EntityFramework;
+﻿using CoreLayer.DataAccess.EntityFramework;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
@@ -23,7 +22,6 @@ namespace DataAccessLayer.Repositories.EntityFramework
                 memberBranch.MemberId = memberId;
                 memberBranch.BranchId = BranchId;
                 context.MemberBranches.Add(memberBranch);
-
                 context.SaveChanges();
             }
         }

@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Abstract;
+using CoreLayer.Entities.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -7,11 +9,12 @@ namespace GymApp.ViewComponents
 {
     public class SideBarViewComponent : ViewComponent
     {
-        private readonly IBranchService _BranchService;
+        private readonly ICategoryService _categoryService;
 
-        public SideBarViewComponent(IBranchService BranchService)
+
+        public SideBarViewComponent(ICategoryService categoryService)
         {
-            _BranchService = BranchService;
+            _categoryService = categoryService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -19,9 +22,9 @@ namespace GymApp.ViewComponents
             return View(items);
         }
 
-        private Task<List<Branch>> GetItemsAsync()
+        private Task<List<Category>> GetItemsAsync()
         {
-            return Task.FromResult(_BranchService!.GetAll());
+            return Task.FromResult(_categoryService!.GetAll());
         }
     }
 }

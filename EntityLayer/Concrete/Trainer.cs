@@ -1,4 +1,4 @@
-﻿using CoreLayer.DataAccess.Entities;
+﻿using CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +16,7 @@ namespace EntityLayer.Concrete
         public string NameSurname { get; set; }
         public string TrainerDescription { get; set; }
         public string TrainerImage { get; set; }
-        public Branch Branch { get; set; }
-        public List<MemberTrainer> Members { get; set; }
+        public Branch? Branch { get; set; }
+        public List<MemberTrainer>? Members { get; set; }
     }
 }

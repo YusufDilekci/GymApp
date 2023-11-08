@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Controllers
 {
-    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private IMemberService _memberService;
+        private ICartService _cartService;
         
-        public RegisterController(IMemberService memberService) 
+        public RegisterController(IMemberService memberService, ICartService cartService) 
         {
-            _memberService= memberService;
+            _memberService = memberService;
+            _cartService = cartService;
         }
 
         [HttpGet]
@@ -32,6 +33,12 @@ namespace GymApp.Controllers
             {
                 member.MemberStatus = true;
                 _memberService.Add(member);
+
+
+                Cart cart = new Cart();
+                cart.MemberId = member.MemberId;
+                _cartService.Add(cart);
+
                 return RedirectToAction("Index", "Home");
             }
             else

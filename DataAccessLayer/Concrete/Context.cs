@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using CoreLayer.Entities.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -96,6 +97,78 @@ namespace DataAccessLayer.Concrete
                     new Packet() { PacketId = 3, PacketType = "Jossoft Özel", PacketPrice = 10000, PacketDescription = "Antrenman Planı, Beslenme Planı, Haftalık Kontrol, Bireysel Koç, Supplement Desteği, Whatsapp Görüşme, Pro Sporcularla Tanışma Fırsatı" }
                 );
 
+            modelBuilder.Entity<Category>()
+                .HasData(
+                    new Category() { CategoryId = 1, CategoryName = "Erkek Giyim" },
+                    new Category() { CategoryId = 2, CategoryName = "Kadın Giyim" },
+                    new Category() { CategoryId = 3, CategoryName = "Supplement" }
+                );
+
+            modelBuilder.Entity<SubCategory>()
+                .HasData(
+                    new SubCategory() { SubCategoryId=1, CategoryId=1, SubCategoryName="Tshirt" , SubCategoryImage="#"},
+                    new SubCategory() { SubCategoryId = 2, CategoryId = 1, SubCategoryName = "Sweatshirt", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 3, CategoryId = 1, SubCategoryName = "Eşofman", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 4, CategoryId = 1, SubCategoryName = "Ayakkabı", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 5, CategoryId = 2, SubCategoryName = "Tshirt", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 6, CategoryId = 2, SubCategoryName = "Sweatshirt", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 7, CategoryId = 2, SubCategoryName = "Eşofman", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 8, CategoryId = 2, SubCategoryName = "Ayakkabı", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 9, CategoryId = 3, SubCategoryName = "Protein Tozu", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 10, CategoryId = 3, SubCategoryName = "Gainer", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 11, CategoryId = 3, SubCategoryName = "Kreatin", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 12, CategoryId = 3, SubCategoryName = "PreWorkout", SubCategoryImage = "#" },
+                    new SubCategory() { SubCategoryId = 13, CategoryId = 3, SubCategoryName = "BCAA", SubCategoryImage = "#" }
+
+                );
+            modelBuilder.Entity<Product>()
+                .HasData(
+                    new Product() { ProductId=1, SubCategoryId=1, ProductName= "Jack & Jones", ProductPrice=200, ProductImage="#", ProductDescription= "Erkek Tshirt"},
+                    new Product() { ProductId = 2, SubCategoryId = 1, ProductName = "Mavi", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 3, SubCategoryId = 1, ProductName = "DeFacto", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 4, SubCategoryId = 2, ProductName = "Jack & Jones", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 5, SubCategoryId = 2, ProductName = "Pull & Bear", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 6, SubCategoryId = 2, ProductName = "Lc Waikiki", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 7, SubCategoryId = 3, ProductName = "Nike", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 8, SubCategoryId = 3, ProductName = "Adidas", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 9, SubCategoryId = 3, ProductName = "Under Armour", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 10, SubCategoryId = 4, ProductName = "Nike", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 11, SubCategoryId = 4, ProductName = "Puma", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 12, SubCategoryId = 4, ProductName = "Adidas", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 13, SubCategoryId = 5, ProductName = "Jack & Jones", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 14, SubCategoryId = 5, ProductName = "Mavi", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 15, SubCategoryId = 5, ProductName = "DeFacto", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 16, SubCategoryId = 6, ProductName = "Jack & Jones", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 17, SubCategoryId = 6, ProductName = "Pull & Bear", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 18, SubCategoryId = 6, ProductName = "Lc Waikiki", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 19, SubCategoryId = 7, ProductName = "Nike", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 20, SubCategoryId = 7, ProductName = "Adidas", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 21, SubCategoryId = 7, ProductName = "Under Armour", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 22, SubCategoryId = 8, ProductName = "Nike", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 23, SubCategoryId = 8, ProductName = "Puma", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 24, SubCategoryId = 8, ProductName = "Adidas", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 25, SubCategoryId = 9, ProductName = "Hardline", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 26, SubCategoryId = 9, ProductName = "Protein Ocean", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 27, SubCategoryId = 9, ProductName = "Swiss", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 28, SubCategoryId = 10, ProductName = "Hardline", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 29, SubCategoryId = 10, ProductName = "Protein Ocean", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 30, SubCategoryId = 10, ProductName = "Swiss", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 31, SubCategoryId = 11, ProductName = "Hardline", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 32, SubCategoryId = 11, ProductName = "Protein Ocean", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 33, SubCategoryId = 11, ProductName = "Swiss", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 34, SubCategoryId = 12, ProductName = "Hardline", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 35, SubCategoryId = 12, ProductName = "Protein Ocean", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 36, SubCategoryId = 12, ProductName = "Swiss", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 37, SubCategoryId = 13, ProductName = "Hardline", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 38, SubCategoryId = 13, ProductName = "Protein Ocean", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" },
+                    new Product() { ProductId = 39, SubCategoryId = 13, ProductName = "Swiss", ProductPrice = 200, ProductImage = "#", ProductDescription = "Erkek Tshirt" }
+
+
+
+
+                );
+
+            
             base.OnModelCreating(modelBuilder);
         }
 
@@ -109,5 +182,13 @@ namespace DataAccessLayer.Concrete
         public DbSet<MemberBranch> MemberBranches { get; set; }
         public DbSet<MemberTrainer> MemberTrainers { get; set; }
         public DbSet<PacketBranch> PacketBranches { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartLine> CartLines { get; set; }
+        public DbSet<ShippingDetail> ShippingDetails { get; set; }
+
     }
 }

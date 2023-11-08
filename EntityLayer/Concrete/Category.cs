@@ -1,4 +1,4 @@
-﻿using CoreLayer.DataAccess.Entities;
+﻿using CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +11,7 @@ namespace EntityLayer.Concrete
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public string CategoryDescription { get; set; }
-        public string CategoryImage { get; set; }
+        public ICollection<SubCategory> SubCategories { get; set; }
 
     }
 }

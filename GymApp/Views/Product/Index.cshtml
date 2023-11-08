@@ -1,0 +1,24 @@
+﻿@model List<Product>
+@{
+    Layout="_EtradeLayout";
+}
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+            <div class="col-lg-4"> 
+                <div class="card" style="width: 18rem;">
+                    <a href="/Product/Details/@product.ProductName?productId=@product.ProductId">
+                        <img src="/images/sweatshirt1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">150 TL</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@product.ProductName Dar kesim uzun kollu Pamuk sweatshirt</li>
+                        </ul>
+                    </a>
+                </div>
+            </div>
+    }
+</div>
+

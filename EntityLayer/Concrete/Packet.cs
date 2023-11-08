@@ -1,4 +1,4 @@
-﻿using CoreLayer.DataAccess.Entities;
+﻿using CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,6 @@ namespace EntityLayer.Concrete
         public string PacketDescription { get; set; }
         public double PacketPrice { get; set; }
         public string PacketType { get; set; }
-        public List<PacketBranch> Branches { get; set; }
+        public List<PacketBranch>? Branches { get; set; }
     }
 }

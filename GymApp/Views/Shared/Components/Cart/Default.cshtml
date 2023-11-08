@@ -1,0 +1,14 @@
+﻿@model List<CartLine>
+@{
+}
+<style>
+    .myClass{
+        margin-left : 2rem;
+    }
+</style>
+<div class="myClass">
+    <a href="/Cart/Index" style="text-decoration:none">
+        <i class="fa-solid fa-cart-shopping"></i>
+        (@Model.Count)
+    </a>
+</div>

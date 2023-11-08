@@ -1,4 +1,4 @@
-﻿using CoreLayer.DataAccess.Entities;
+﻿using CoreLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,5 +19,6 @@ namespace EntityLayer.Concrete
         public bool MemberStatus { get; set; }
         public List<MemberBranch>? Branches { get; set; }
         public List<MemberTrainer>? Trainers { get; set; }
+        public Cart? Cart { get; set; }
     }
 }

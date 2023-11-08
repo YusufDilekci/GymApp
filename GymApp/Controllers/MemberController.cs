@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
+using CoreLayer.Entities.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Controllers
@@ -8,22 +10,22 @@ namespace GymApp.Controllers
 
     public class MemberController : Controller
     {
-        private IMemberService _memberService;
+        private IUserService _userService;
 
-        public MemberController(IMemberService memberService)
+        public MemberController(IUserService userService)
         {
-            _memberService= memberService;
+            _userService = userService;
         }
 
         public IActionResult Index()
         {
-            var email = User.Identity!.Name;
-            if(email == null )
+            var username = User.Identity!.Name;
+            if(username == null)
             {
                 return NotFound();
             }
-            var member = _memberService.GetByEmail(email);
-            return View(member);
+            var user = _userService.GetByName(username);
+            return View(user);
         }
 
         public IActionResult Privacy()
