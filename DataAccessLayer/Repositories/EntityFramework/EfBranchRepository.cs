@@ -1,7 +1,10 @@
-﻿using CoreLayer.DataAccess.EntityFramework;
+﻿using ClosedXML.Excel;
+using CoreLayer.DataAccess.EntityFramework;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -66,5 +69,6 @@ namespace DataAccessLayer.Repositories.EntityFramework
 
             }
         }
+
     }
 }

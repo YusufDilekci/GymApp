@@ -10,6 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICategoryDal : IEntityRepositoryBase<Category>
     {
-        
+        List<Category> GetAllWithProducts();
     }
 }

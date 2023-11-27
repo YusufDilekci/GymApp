@@ -189,6 +189,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartLine> CartLines { get; set; }
         public DbSet<ShippingDetail> ShippingDetails { get; set; }
-
+        public DbSet<Admin> Admins { get; set; }
     }
 }

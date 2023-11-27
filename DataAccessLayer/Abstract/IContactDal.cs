@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IContactDal : IEntityRepositoryBase<Contact>
     {
+        Contact GetLastContact();
     }
 }

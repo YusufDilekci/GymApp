@@ -61,7 +61,7 @@ namespace CoreLayer.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                var updatedEntity = context.Entry(entity); // parametre olarak verilen objesinin referansını yakalamak   
+                var updatedEntity = context.Entry(entity); // parametre olarak verilen objesinin referansını yakalamak
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
 

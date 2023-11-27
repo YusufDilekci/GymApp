@@ -1,0 +1,50 @@
+﻿@using GymApp.Areas.Admin.Models;
+@model List<CategoryChartViewModel>
+@{
+    Layout = "_AdminLayout";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="chartdiv" style="width:800px; height:600px">
+            Burası Chart Alanı 
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages' : ['corechart']});
+    google.charts.setOnLoadCallback(DrawonLoad)
+
+    function DrawonLoad(){
+        $(function() {
+            $.ajax({
+                type:'GET',
+                url:'/Admin/Chart/CategoryChart/',
+                success: function(chartsdata){
+
+                    var Data = chartsdata.jsonlist;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'CategoryName')
+                    data.addColumn('number', 'ProductCount')
+
+                    for(var i=0; i < Data.length; i++){
+                        data.addRow([Data[i].categoryName, Data[i].productCount]); // DataTable verileri eklerken propların camelCase olarak yazılması gerekiyor.
+
+                    }
+
+                    var chart = new google.visualization.PieChart(document.getElementById('chartdiv'));
+
+                    chart.draw(data,{
+                        title:"Google Chart Core Project",
+                        position:"top",
+                        fontsize:"16px"
+                    });
+                }
+            });
+        })
+    }
+</script>

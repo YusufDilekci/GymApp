@@ -14,11 +14,12 @@
  body {
      overflow-x:hidden;
 }
- .main-container {
-     padding: 10px 15px;
+.main-container {
+    background-image: url('../images/bg1.png');
+    padding: 10px 15px;
 }
- .skyblue {
-     background-image:url('../images/main-slider-img1.jpg');
+.skyblue {
+    background-image: url('../images/bg1.png');
 }
  .darkerskyblue {
      background-image:url('../images/bg1.png');
@@ -90,10 +91,11 @@
      line-height: 52px;
      letter-spacing: -2px;
 }
- #carousel-example-generic .carousel-caption {
-     right: 10%;
-     left: 10%;
-     padding-bottom: 30px;
+#carousel-example-generic .carousel-caption {
+    background-image: url('~/images/bg1.png');
+    right: 10%;
+    left: 10%;
+    padding-bottom: 30px;
 }
  .color-yellow {
      color:#ffcb05;

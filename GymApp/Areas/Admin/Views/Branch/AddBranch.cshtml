@@ -1,0 +1,41 @@
+﻿@model EntityLayer.Concrete.Branch
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Kategori</h1>
+
+
+@using (Html.BeginForm("AddBranch", "Branch", FormMethod.Post))
+{
+    <div class="text-center">
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom01" class="form-label">Spor Dalı Adı</label>
+                @Html.TextBoxFor(i => i.BranchName, new{ @class="form-control"})
+                @Html.ValidationMessageFor(i => i.BranchName, "", new{@class = "text-danger"})
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustomUsername" class="form-label">Spor Dalı Bilgisi</label>
+                @Html.TextBoxFor(i => i.BranchInfo, new{ @class="form-control"})
+                @Html.ValidationMessageFor(i => i.BranchInfo, "", new{@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="validationCustom03" class="form-label">Spor Dalı Fiyatı</label>
+                @Html.TextBoxFor(i => i.BranchPrice, new{ @class="form-control"})
+                @Html.ValidationMessageFor(i => i.BranchInfo, "", new{@class = "text-danger"})
+
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Ekle</button>
+        </div>
+    </div>
+}
+

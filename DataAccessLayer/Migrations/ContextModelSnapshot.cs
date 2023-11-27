@@ -127,6 +127,42 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Admin", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminId"), 1L, 1);
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdminId");
+
+                    b.ToTable("Admins", (string)null);
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Branch", b =>
                 {
                     b.Property<int>("BranchId")
@@ -148,7 +184,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("BranchId");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
 
                     b.HasData(
                         new
@@ -204,7 +240,7 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("MemberId")
                         .IsUnique();
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.CartLine", b =>
@@ -231,7 +267,7 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("CartLines");
+                    b.ToTable("CartLines", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Category", b =>
@@ -248,7 +284,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -293,7 +329,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Contact", b =>
@@ -314,7 +350,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("ContactId");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Description", b =>
@@ -336,7 +372,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Descriptions");
+                    b.ToTable("Descriptions", (string)null);
 
                     b.HasData(
                         new
@@ -450,7 +486,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
 
                     b.HasData(
                         new
@@ -574,7 +610,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("MemberId");
 
-                    b.ToTable("Members");
+                    b.ToTable("Members", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.MemberBranch", b =>
@@ -589,7 +625,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("MemberBranches");
+                    b.ToTable("MemberBranches", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.MemberTrainer", b =>
@@ -604,7 +640,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("MemberTrainers");
+                    b.ToTable("MemberTrainers", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Packet", b =>
@@ -628,7 +664,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("PacketId");
 
-                    b.ToTable("Packets");
+                    b.ToTable("Packets", (string)null);
 
                     b.HasData(
                         new
@@ -666,7 +702,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("PacketBranches");
+                    b.ToTable("PacketBranches", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Product", b =>
@@ -699,7 +735,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("SubCategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -1098,7 +1134,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("CartId");
 
-                    b.ToTable("ShippingDetails");
+                    b.ToTable("ShippingDetails", (string)null);
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.SubCategory", b =>
@@ -1124,7 +1160,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("SubCategories");
+                    b.ToTable("SubCategories", (string)null);
 
                     b.HasData(
                         new
@@ -1247,7 +1283,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
 
                     b.HasData(
                         new

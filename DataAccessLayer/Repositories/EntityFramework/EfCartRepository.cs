@@ -21,6 +21,7 @@ namespace DataAccessLayer.Repositories.EntityFramework
                 {
                     context.CartLines.Remove(cartline);
                 }
+                context.SaveChanges();
             };
         }
 

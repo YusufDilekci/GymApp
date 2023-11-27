@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using CoreLayer.Business;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IContactService
+    public interface IContactService : IEntityManagerBase<Contact>
     {
-        void Add(Contact contact);
-        void Update(Contact contact);
-        void Delete(Contact contact);
-        List<Contact> GetAll();
         Contact GetById(int id);
+        Contact GetLastContact();
     }
 }

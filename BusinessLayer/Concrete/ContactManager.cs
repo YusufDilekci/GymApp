@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using CoreLayer.Business.Concrete;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -9,37 +10,24 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class ContactManager : IContactService
+    public class ContactManager : EntityManagerBase<Contact, IContactDal>,IContactService
     {
         private IContactDal _contactDal;
-        public ContactManager(IContactDal contactDal) 
+        public ContactManager(IContactDal contactDal) : base(contactDal)
         {
-            _contactDal= contactDal;
+            _contactDal = contactDal;
+            
         }
-
-        public void Add(Contact contact)
-        {
-            _contactDal.Add(contact);
-        }
-
-        public void Delete(Contact contact)
-        {
-            _contactDal.Delete(contact);
-        }
-
-        public List<Contact> GetAll()
-        {
-            return _contactDal.GetAll();
-        }
-
         public Contact GetById(int id)
         {
             return _contactDal.Get(i => i.ContactId == id);
         }
 
-        public void Update(Contact contact)
+        public Contact GetLastContact()
         {
-            _contactDal.Update(contact);
+            return _contactDal.GetLastContact();
         }
+
+
     }
 }

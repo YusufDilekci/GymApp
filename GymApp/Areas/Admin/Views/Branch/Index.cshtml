@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Branch>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Branches</h1>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Spor Dalı Adı</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var branch in Model)
+    {  
+        <tr>
+            <td>@branch.BranchId</td>
+            <td>@branch.BranchName</td>
+            <td>
+                <a href="/Admin/Branch/EditBranch?branchId=@branch.BranchId" class="btn btn-warning">Düzenle</a>
+            </td>
+            <td>
+                <a href="/Admin/Branch/DeleteBranch?branchId=@branch.BranchId" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+                
+    }
+</table>
+<div class="text-center">
+    <a class="btn btn-primary btn-lg" href="/Admin/Branch/AddBranch">
+        Yeni Kategori Ekle
+    </a>
+</div>
+
+<div>
+    <a class="btn btn-info btn-lg" href="/Admin/Branch/ExportStaticExcelBranchList">
+        Download
+    </a>
+</div>
+
+<br />
+@Html.PagedListPager((IPagedList)Model, _page => Url.Action("Index", new{ page = _page}))
+
+
+

@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
+using CoreLayer.Aspects.Autofac.Validation;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -16,6 +18,9 @@ namespace BusinessLayer.Concrete
         {
             _BranchDal= Branch;
         }
+
+
+        [ValidationAspect(typeof(BranchValidator), Priority = 1)]
         public void Add(Branch Branch)
         {
             _BranchDal.Add(Branch);

@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using CoreLayer.Entities.Concrete;
 using EntityLayer.Concrete;
+using GymApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,14 +12,16 @@ namespace GymApp.Controllers
         private ICartService _cartService;
         private ICartLineService _cartLineService;
         private IMemberService _memberService;
-        private readonly UserManager<AppUser> _userManager;
         private readonly IUserService _userService;
-        public CartController(ICartService cartService, ICartLineService cartLineService, IMemberService memberService, IUserService userService) 
+        private readonly IShippingDetailService _shippingDetailService;
+        public CartController(ICartService cartService, ICartLineService cartLineService, IMemberService memberService,
+            IUserService userService, IShippingDetailService shippingDetailService) 
         {
             _cartService = cartService;
             _cartLineService = cartLineService;
             _memberService = memberService;
             _userService = userService;
+            _shippingDetailService = shippingDetailService;
         }
         public async Task<IActionResult> Index()
         {
@@ -75,11 +78,36 @@ namespace GymApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(ShippingDetail s)
+        public IActionResult Checkout(ShippingDetailsViewModel s)
         {
             if(ModelState.IsValid)
             {
-                return NotFound();
+                // Complete Order
+                // Clear the Cart
+                var user = _userService.GetByName(User.Identity.Name);
+                var member = _memberService.GetByEmail(user.Email);
+                var cart = _cartService.GetByMember(member.MemberId);
+
+                ShippingDetail newShipping = new ShippingDetail()
+                {
+                    CartId = cart.CartId,
+                    FullName = s.FullName,
+                    AddressTitle = s.AddressTitle,
+                    Address = s.Address,
+                    Email = s.Email,
+                    City = s.City,
+                    Region = s.Region,
+                    PostalCode = s.PostalCode,
+
+
+                };
+
+                _shippingDetailService.Add(newShipping);
+                _cartService.ClearCartLines(cart.CartId);
+
+                Thread.Sleep(3 * 1000); //3 saniye bekle
+
+                return RedirectToAction("Index", "Etrade");
             }
             return View();
         }

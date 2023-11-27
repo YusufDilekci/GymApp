@@ -16,7 +16,7 @@ namespace EntityLayer.Concrete
         public string AddressTitle { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public string Region { get; set; } //İlçe
+        public string Region { get; set; } 
         public string PostalCode { get; set; }
         public Cart? Cart { get; set; }
 

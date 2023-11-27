@@ -2,6 +2,7 @@
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,16 @@ namespace DataAccessLayer.Repositories.EntityFramework
 {
     public class EfCategoryRepository : EfEntityRepositoryBase<Category, Context>, ICategoryDal
     {
+        public List<Category> GetAllWithProducts()
+        {
+            using (Context context = new Context())
+            {
 
+                return (from c in context.Categories
+                        from s in c.SubCategories
+                        from p in s.Products!
+                        select c).ToList();
+            }
+        }
     }
 }
