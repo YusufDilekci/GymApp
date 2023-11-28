@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
+using GymApp.Areas.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -20,9 +22,39 @@ namespace GymApp.Areas.Admin.Controllers
 
         public IActionResult CategoryList()
         {
-            var categories = _categoryService.GetAll();
+            var categories = _categoryService.GetAll().Select(i =>  new CategoryAjaxViewModel
+            {
+                CategoryId = i.CategoryId,
+                CategoryName = i.CategoryName
+            }).ToList();
             var jsonlist = JsonConvert.SerializeObject(categories);
             return Json(jsonlist);
+        }
+
+        public IActionResult GetCategoryById(int categoryId)
+        {
+            var category = _categoryService.GetById(categoryId);
+            var jsonCategory = JsonConvert.SerializeObject(category);
+            return Json(jsonCategory);
+        }
+
+        [HttpPost]
+        public IActionResult AddCategory(Category c)
+        {
+ 
+            _categoryService.Add(c);
+            var jsonCategory = JsonConvert.SerializeObject(c);
+            return Json(jsonCategory);
+
+
+        }
+
+        public IActionResult DeleteCategory(int id)
+        {
+            var c = _categoryService.GetById(id);
+            _categoryService.Delete(c);
+            var jsonCategory = JsonConvert.SerializeObject(c);
+            return Json(jsonCategory);
         }
     }
 }

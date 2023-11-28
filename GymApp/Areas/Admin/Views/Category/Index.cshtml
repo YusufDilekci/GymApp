@@ -1,3 +1,102 @@
 ﻿@{
     Layout = "_AdminLayout";
 }
+
+<h1>Kategori Ajax İşlemleri</h1>
+<br />
+<button type="button" id="btngetlist" class="btn btn-outline-primary">Kategori Listesi</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-warning">Yazar Getir</button>
+<button type="button" id="btnaddcategory" class="btn btn-outline-success">Add</button>
+<button type="button" id="btndeletecategory" class="btn btn-outline-danger">Sil</button>
+
+<br />
+<div id="categoryList">
+    Buraya kategoriler gelecek
+</div>
+<div id="categoryGet">
+    Buraya bir kategori gelecek
+</div>
+
+<div>
+    <input type="text" id="categoryId" placeholder="Category ID değerini giriniz" class="form-control"/>
+</div>
+
+<div>
+    <input type="text" id="categoryname" class="form-control" placeholder="CategoryName"/>
+</div>
+
+<div>
+    <h1>Silinecek Kategori Id</h1>
+    <input type="text" id="deletedCategoryId" class="form-control"/>
+</div>
+@section scripts{
+    <script>
+        $("#btngetlist").click(function(){
+            $.ajax({
+                contentType:"application/json",
+                dataType:"json",
+                type:"Get",
+                url:"/Admin/Category/CategoryList",
+                success:function(func) {
+                    let w = jQuery.parseJSON(func);
+                    console.log(w);
+                    let tableHtml = "<table class=table table-bordered> <tr><th> KATEGORI ID </th> \
+                    <th> KATEGORI NAME </th></tr>";
+
+                    $.each(w, (index, value) => {
+                        tableHtml += `<tr><td>${value.CategoryId}</td><td>${value.CategoryName}</td></tr>`
+                    });
+
+                    tableHtml += "</table>"
+                    $("#categoryList").html(tableHtml);
+
+                }
+            });
+        });
+        $("#btngetbyid").click( x => { 
+            let id = $("#categoryId").val();
+            $.ajax({
+                contentType:"application/json",
+                dataType: "json",
+                type:"Get",
+                url:"/Admin/Category/GetCategoryById",
+                data: {categoryId: id},
+                success: function(func){
+                    let w = jQuery.parseJSON(func);
+                    console.log(func);
+
+                    let getvalue = `<table class=table table-bordered> <tr><th> KATEGORI ID </th> \
+                    <th> KATEGORI NAME </th></tr> <tr><td>${w.CategoryId}</td><td>${w.CategoryName}</td></tr></table>`;
+
+                    $("#categoryGet").html(getvalue);
+
+                }
+            });
+        })
+        $('#btnaddcategory').click(function() {
+            let category = {
+                CategoryName: $('#categoryname').val(),
+            };
+            $.ajax({
+                type:"Post",
+                url:"/Admin/Category/AddCategory",
+                data:category,
+                success:function(func){  //Başarılı olduktan sonra controllerdan gönderilen json bu fonksiyona parametre olarak gelecek
+                    let result = jQuery.parseJSON(func);
+                    alert("Kategori başarılı bir şekilde eklendi");
+                }
+            });
+        });
+        $('#btndeletecategory').click( x => {
+            let id = $('#deletedCategoryId').val();
+            $.ajax({
+                type: "Get",
+                url: "/Admin/Category/DeleteCategory?id=" + id,
+                success: function (func) {  
+                    let result = jQuery.parseJSON(func);
+                    alert("Kategori başarılı bir şekilde silindi");
+                }
+            });
+        });
+    </script>
+}
