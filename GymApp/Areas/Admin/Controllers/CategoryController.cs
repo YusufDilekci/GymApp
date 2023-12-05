@@ -56,5 +56,15 @@ namespace GymApp.Areas.Admin.Controllers
             var jsonCategory = JsonConvert.SerializeObject(c);
             return Json(jsonCategory);
         }
+
+
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category)
+        {
+            var c = _categoryService.GetById(category.CategoryId);
+            _categoryService.Update(c);
+            var jsonCat = JsonConvert.SerializeObject(category);
+            return Json(jsonCat);
+        }
     }
 }

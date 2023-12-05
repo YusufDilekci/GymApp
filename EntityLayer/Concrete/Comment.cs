@@ -11,7 +11,8 @@ namespace EntityLayer.Concrete
     {
         public int CommentId { get; set; }
         public int ProductId { get; set; }
-        public string CommentDescription { get; set; }
+        public string CommentTitle { get; set; }
+        public string? CommentDescription { get; set; }
         public DateTime CommentDate { get; set; }
         public int CommentStar { get; set; }
         public Product Product { get; set; }

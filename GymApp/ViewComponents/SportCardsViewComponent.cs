@@ -26,8 +26,7 @@ namespace GymApp.ViewComponents
 
         private async Task<List<Branch>> GetItemsAsync()
         {
-            var username = User.Identity!.Name;
-            var user = await _userManager.FindByNameAsync(username);
+            var user = await _userManager.FindByNameAsync(User.Identity!.Name);
             var member = _memberService.GetByEmail(user.Email);
 
             return await Task.FromResult(_BranchService!.GetAllByMember(member.MemberId));

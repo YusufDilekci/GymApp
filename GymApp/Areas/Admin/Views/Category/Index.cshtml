@@ -5,9 +5,11 @@
 <h1>Kategori Ajax İşlemleri</h1>
 <br />
 <button type="button" id="btngetlist" class="btn btn-outline-primary">Kategori Listesi</button>
-<button type="button" id="btngetbyid" class="btn btn-outline-warning">Yazar Getir</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-warning">Kategori Getir</button>
 <button type="button" id="btnaddcategory" class="btn btn-outline-success">Add</button>
 <button type="button" id="btndeletecategory" class="btn btn-outline-danger">Sil</button>
+<button type="button" id="btnupdatecategory" class="btn btn-outline-info">Güncelle</button>
+
 
 <br />
 <div id="categoryList">
@@ -22,6 +24,7 @@
 </div>
 
 <div>
+    <h1>Add Category</h1>
     <input type="text" id="categoryname" class="form-control" placeholder="CategoryName"/>
 </div>
 
@@ -29,6 +32,14 @@
     <h1>Silinecek Kategori Id</h1>
     <input type="text" id="deletedCategoryId" class="form-control"/>
 </div>
+
+<div>
+    <h1>Update Edilecek Kategori</h1>
+    <input type="text" id="updatedCategoryId" class="form-control"/>
+    <input type="text" id="updatedCategoryName" class="form-control" />
+
+</div>
+
 @section scripts{
     <script>
         $("#btngetlist").click(function(){
@@ -72,7 +83,7 @@
 
                 }
             });
-        })
+        });
         $('#btnaddcategory').click(function() {
             let category = {
                 CategoryName: $('#categoryname').val(),
@@ -98,5 +109,22 @@
                 }
             });
         });
+        //$('#btnupdatecategory').click(function(){
+        //    let = cat{
+        //        CategoryId:${'#updatedCategoryId'}.val(),
+        //        CategoryName:${'#updatedCategoryName'}.val()
+        //    };
+        //    $.ajax({
+        //        type:"Post",
+        //        url:"/Admin/Category/UpdateCategory",
+        //        data:cat,
+        //        success: function(func) {
+        //            let result = jQuery.parseJSON(func);
+        //            alert("Kategori güncellendi");
+        //        }
+        //    });
+
+        //});
+
     </script>
 }

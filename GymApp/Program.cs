@@ -43,17 +43,19 @@ builder.Services.AddTransient<IShippingDetailService, ShippingDetailManager>();
 builder.Services.AddTransient<IShippingDetailDal, EfShippingDetailRepository>();
 builder.Services.AddTransient<IAdminService, AdminManager>();
 builder.Services.AddTransient<IAdminDal, EfAdminRepository>();
+builder.Services.AddTransient<ICommentService, CommentManager>();
+builder.Services.AddTransient<ICommentDal, EfCommentRepository>();
 
 //Authorization
 
-//builder.Services.AddMvc(config =>
-//{
-//    var policy = new AuthorizationPolicyBuilder()
-//    .RequireAuthenticatedUser()
-//    .Build();
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
 
-//    config.Filters.Add(new AuthorizeFilter(policy));
-//});
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
 
 //Identity
 builder.Services.AddDbContext<Context>();
@@ -66,24 +68,24 @@ builder.Services.AddIdentity<AppUser, AppRole>(x =>
 
 
 
-// Authentication gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
+//Authentication gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
 // Amaç kullanýcýnýn giriþ veya kayýt olmadan sayfalarý görmemesidir.
-//builder.Services.AddMvc();
-//builder.Services.AddAuthentication(
-//    CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(x =>
-//    {
-//        x.LoginPath = "/Login/Index";
-//    });
+builder.Services.AddMvc();
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.LoginPath = "/Login/Index";
+    });
 
-//builder.Services.ConfigureApplicationCookie(options =>
-//{
-//    options.Cookie.HttpOnly= true;
-//    options.ExpireTimeSpan= TimeSpan.FromMinutes(5);
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-//    options.LoginPath = "/Login/Index";
-//    options.SlidingExpiration = true;
-//});
+    options.LoginPath = "/Login/Index";
+    options.SlidingExpiration = true;
+});
 
 // Session
 //builder.Services.AddSession(); Bu yöntem yerine SignInAsync() yöntemini kullanýcaðýz.
@@ -109,7 +111,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.UseAuthentication();
+app.UseAuthentication();
 
 //app.UseSession();
 

@@ -1,8 +1,158 @@
-﻿@model Product
+﻿@model ProductCommentViewModel
+
 @{
     Layout = "_EtradeLayout";
 }
+<style>
+    .review-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+.review {
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+    .user-info img {
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+.review-text {
+    margin-top: 10px;
+}
+
+/*REVIEWDIV*/
+
+    .card {
+        width: 350px;
+        border: none;
+        box-shadow: 5px 6px 6px 2px #e9ecef;
+        border-radius: 12px;
+    }
+
+    .circle-image img {
+        border: 6px solid #fff;
+        border-radius: 100%;
+        padding: 0px;
+        top: -28px;
+        position: relative;
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        z-index: 1;
+        background: #e7d184;
+        cursor: pointer;
+    }
+
+
+    .dot {
+        height: 18px;
+        width: 18px;
+        background-color: blue;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        border: 3px solid #fff;
+        top: -48px;
+        left: 186px;
+        z-index: 1000;
+    }
+
+    .name {
+        margin-top: -21px;
+        font-size: 18px;
+    }
+
+
+    .fw-500 {
+        font-weight: 500 !important;
+    }
+
+
+    .start {
+        color: green;
+    }
+
+    .stop {
+        color: red;
+    }
+
+
+    .rate {
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+
+
+    .rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center
+    }
+
+    .rating > input {
+        display: none
+    }
+
+    .rating > label {
+        position: relative;
+        width: 1em;
+        font-size: 30px;
+        font-weight: 300;
+        color: #FFD600;
+        cursor: pointer
+    }
+
+    .rating > label::before {
+        content: "\2605";
+        position: absolute;
+        opacity: 0
+    }
+
+    .rating > label:hover:before,
+    .rating > label:hover ~ label:before {
+        opacity: 1 !important
+    }
+
+    .rating > input:checked ~ label:before {
+        opacity: 1
+    }
+
+    .rating:hover > input:checked ~ label:before {
+        opacity: 0.4
+    }
+
+
+    .buttons {
+        top: 36px;
+        position: relative;
+    }
+
+
+    .rating-submit {
+        border-radius: 15px;
+        color: #fff;
+        height: 49px;
+    }
+
+
+    .rating-submit:hover {
+        color: #fff;
+    }
+
+
+</style>
 
 
 <div class="container pb-5 w-75">
@@ -40,16 +190,13 @@
                     <i class="fa-solid fa-star-half"></i>
                     <span class="badge bg-success">55</span>
                 </div>
-                <div class="col-md-4">
-                    <a href="#">Write a review</a>
-                </div>
             </div>
             <div class="row mt-2">
                 <div class="col-md-12">
                     <h4 id="product-price" style="color:#f00"><span>120 <i class="fa-solid fa-turkish-lira-sign"></i></span></h4>
                 </div>
             </div>
-            @using (Html.BeginForm("AddToCart", "Cart", new{productId=Model.ProductId}))
+            @using (Html.BeginForm("AddToCart", "Cart", new{productId=Model.p.ProductId}))
             {
             <div class="row mt-2">
                 <div class="col-md-12">
@@ -101,11 +248,123 @@
                     <p>PAYMENT METHODS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
                 <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel">
-                    <p>REVIEWS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="review-container">
+                        <h1>Product Reviews</h1>
+                        @foreach(var comment in Model.Comments)
+                        {
+                            <div class="review">
+                                <div class="user-info">
+                                    <img src="/images/trainer1.jpg" alt="User 1" width="50" height="50">
+                                    <p><strong>John Doe</strong><br>Product: @comment.CommentTitle</p>
+                                </div>
+                                <p class="review-text">@comment.CommentDescription</p>
+                            </div>
+                            
+                        }
+
+                        <div class="review">
+                            <div class="user-info">
+                                <img src="/images/trainer1.jpg" alt="User 1" width="50" height="50">
+                                <p><strong>John Doe</strong><br>Product: Amazing Product</p>
+                            </div>
+                            <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut metus vitae felis consequat euismod vel nec nunc.</p>
+                        </div>
+
+                        <div class="review">
+                            <div class="user-info">
+                                <img src="/images/trainer1.jpg" alt="User 2" width="50" height="50">
+                                <p><strong>Jane Smith</strong><br>Product: Awesome Product</p>
+                            </div>
+                            <p class="review-text">Sed ullamcorper, velit eu fermentum varius, purus justo cursus libero, sit amet bibendum justo risus vel lectus.</p>
+                        </div>
+
+                        <!-- Add more reviews as needed -->
+
+                        
+                    </div>
+   
+                    <button class="btn btn-outline-primary" id="openReview" style="margin-left:500px">Write a review</button>
+
+
+                    <div class="container d-flex justify-content-center mt-5" id="reviewDiv" style="visibility:hidden">
+
+                        <div class="card text-center mb-5">
+
+                            <div class="circle-image">
+                                <img src="https://i.imgur.com/hczKIze.jpg" width="50">
+                            </div>
+
+                            <span class="dot"></span>
+
+                            <span class="name mb-1 fw-500">Bryan Williams</span>
+                            <small class="text-black-50">Tata Ace</small>
+                            <small class="text-black-50 font-weight-bold">QP09AA9090</small>
+
+
+                            <form asp-controller="Product" asp-action="Review" method="post">
+                                <input asp-for="p.ProductId" type="hidden" />
+
+                                <div class="location mt-4">
+                                    <label>Comment Title: </label>
+                                    <span class="d-block"><small class="text-truncate ml-2"><input asp-for="c.CommentTitle"/></small> </span>
+                                    <label>Comment Description: </label>
+                                    <span class="d-block"><small class="text-truncate ml-2"><textarea asp-for="c.CommentDescription" cols="50"></textarea></small> </span>
+
+                                </div>
+
+                                <div class="rate bg-success py-3 text-white mt-3">
+
+                                    <h6 class="mb-0">Rate your driver</h6>
+
+                                    <div class="rating">
+                                        <input type="radio" asp-for="c.CommentStar" value="5" id="5">
+                                        <label for="5">☆</label> <input type="radio" asp-for="c.CommentStar" value="4" id="4">
+                                        <label for="4">☆</label> <input type="radio" asp-for="c.CommentStar" value="3" id="3">
+                                        <label for="3">☆</label> <input type="radio" asp-for="c.CommentStar" value="2" id="2">
+                                        <label for="2">☆</label> <input type="radio" asp-for="c.CommentStar" value="1" id="1">
+                                        <label for="1">☆</label>
+                                    </div>
+                                    <div class="buttons px-4 mt-0">
+                                        <button class="btn btn-warning btn-block rating-submit">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $("#openReview").click(function () {
+            $("#reviewDiv").css("visibility", "");
+        });
+
+        var msg = '@ViewBag.msg';
+        if(msg === "true"){
+            Swal.fire("Yorumunuz başarılı bir şekilde kaydedildi.");
+        }
+        else if(msg === "false"){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    </script>
+}
+
 
 
