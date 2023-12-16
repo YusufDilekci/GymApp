@@ -2,6 +2,7 @@
 using BusinessLayer.ValidationRules;
 using ClosedXML.Excel;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 using X.PagedList;
@@ -9,6 +10,7 @@ using X.PagedList;
 namespace GymApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class BranchController : Controller
     {
         private IBranchService _branchService;

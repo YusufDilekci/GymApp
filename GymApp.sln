@@ -5,13 +5,15 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymApp", "GymApp\GymApp.csproj", "{A23E715A-0F11-4097-A7BB-38DD075B63FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{377E63D9-92A0-44C4-AA6D-ABC7432EDEE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{377E63D9-92A0-44C4-AA6D-ABC7432EDEE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{DA3CE93C-9831-4B63-BEB4-C4F488B5ACC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{DA3CE93C-9831-4B63-BEB4-C4F488B5ACC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{E3E3AC80-1552-45B2-9FA7-67362FF4926B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{E3E3AC80-1552-45B2-9FA7-67362FF4926B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{C415A366-F708-4B85-9D9C-ED97DDBF3CB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{C415A366-F708-4B85-9D9C-ED97DDBF3CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWT_Web_API", "JWT_Web_API\JWT_Web_API.csproj", "{3BBB7F3C-EC6F-4119-95C8-E172AA1D3754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C415A366-F708-4B85-9D9C-ED97DDBF3CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C415A366-F708-4B85-9D9C-ED97DDBF3CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C415A366-F708-4B85-9D9C-ED97DDBF3CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BBB7F3C-EC6F-4119-95C8-E172AA1D3754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BBB7F3C-EC6F-4119-95C8-E172AA1D3754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BBB7F3C-EC6F-4119-95C8-E172AA1D3754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BBB7F3C-EC6F-4119-95C8-E172AA1D3754}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,8 @@ using EntityLayer.Concrete;
 using GymApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
+//Comment Eklendiğinde Ürünün StarRateinin eş zamanlı olarak değişeceği TRIGGER OLUŞTURULACAK!! 
+
 namespace GymApp.Controllers
 {
     public class ProductController : Controller

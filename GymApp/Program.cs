@@ -63,12 +63,14 @@ builder.Services.AddIdentity<AppUser, AppRole>(x =>
 {
     x.Password.RequireUppercase = false;
     x.Password.RequireNonAlphanumeric = false;
+    x.Password.RequiredLength = 1;
+    x.Password.RequireLowercase= false;
 })
     .AddEntityFrameworkStores<Context>();
 
 
 
-//Authentication gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
+// Authentication gereken sayfalara girmeye çalýþýnca kullanýcýyý login sayfasýna yönlendirecek.
 // Amaç kullanýcýnýn giriþ veya kayýt olmadan sayfalarý görmemesidir.
 builder.Services.AddMvc();
 builder.Services.AddAuthentication(
@@ -109,9 +111,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.UseAuthentication();
 
 //app.UseSession();
 

@@ -1,12 +1,14 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using GymApp.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace GymApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private ICategoryService _categoryService;

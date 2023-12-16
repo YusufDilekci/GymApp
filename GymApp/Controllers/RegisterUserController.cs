@@ -1,4 +1,6 @@
-﻿using CoreLayer.Entities.Concrete;
+﻿using BusinessLayer.Abstract;
+using CoreLayer.Entities.Concrete;
+using EntityLayer.Concrete;
 using GymApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +12,13 @@ namespace GymApp.Controllers
     public class RegisterUserController : Controller
     {
         private UserManager<AppUser> _userManager;
-
-        public RegisterUserController(UserManager<AppUser> userManager)
+        private IMemberService _memberService;
+        private ICartService _cartService;
+        public RegisterUserController(UserManager<AppUser> userManager, IMemberService memberService, ICartService cartService)
         {
             _userManager = userManager;
+            _memberService = memberService;
+            _cartService = cartService;
         }
         public IActionResult Index()
         {
@@ -37,6 +42,24 @@ namespace GymApp.Controllers
 
                 if (result.Succeeded)
                 {
+                    Member member = new Member()
+                    {
+                        MemberEmail = s.Email,
+                        MemberUserName = s.UserName,
+                        MemberNameSurname = s.NameSurname,
+                        MemberPassword = s.Password,
+                        MemberStatus = true
+                    };
+
+                    _memberService.Add(member);
+
+                    Cart cart = new Cart()
+                    {
+                        MemberId = member.MemberId
+                    };
+
+                    _cartService.Add(cart);
+
                     return RedirectToAction("Index", "Login");
                 }
                 else

@@ -1,10 +1,12 @@
 ﻿using BusinessLayer.Abstract;
 using GymApp.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ChartController : Controller
     {
         private ICategoryService _categoryService;
